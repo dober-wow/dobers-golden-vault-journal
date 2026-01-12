@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Heist Team - Golden Vault Journal</title>
+    <meta name="description" content="Meet the members of the heist team">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .character-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .character-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(201, 169, 89, 0.2);
+        }
+
+        .character-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .character-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: top;
+            border: none;
+            border-radius: 0;
+            margin: 0;
+        }
+
+        .character-card .info {
+            padding: 1rem;
+        }
+
+        .character-card h2 {
+            margin: 0 0 0.25rem 0;
+            border: none;
+            padding: 0;
+            font-size: 1.2rem;
+        }
+
+        .character-card .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <a href="../index.html" class="back-link">← Back to Journal</a>
+
+        <h1>🗡️ The Heist Team</h1>
+        <p style="text-align: center; color: var(--text-secondary); font-style: italic;">
+            Five specialists. One impossible job.
+        </p>
+
+        <div class="character-grid">
+            <div class="character-card">
+                <a href="blood-feather.html">
+                    <img src="../assets/characters/blood_feather_whispers_clean_1768150567897.png" alt="Blood Feather">
+                    <div class="info">
+                        <h2>Blood Feather</h2>
+                        <p class="subtitle">Kenku Soulknife</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="character-card">
+                <a href="slim-pickens.html">
+                    <img src="../assets/characters/Slim_Pickens_portrait.png" alt="Slim Pickens">
+                    <div class="info">
+                        <h2>Slim Pickens</h2>
+                        <p class="subtitle">Halfling Rogue / Warlock</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="character-card">
+                <a href="captain-kiara.html">
+                    <img src="../assets/characters/Captain_Kiara_Tawny.png" alt="Captain Kiara Tawny">
+                    <div class="info">
+                        <h2>Captain Kiara Tawny</h2>
+                        <p class="subtitle">Tabaxi Battle Master</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="character-card">
+                <a href="freya.html">
+                    <img src="../assets/characters/freya_portrait.png" alt="Freya">
+                    <div class="info">
+                        <h2>Freya</h2>
+                        <p class="subtitle">Eladrin Wild Magic Sorcerer</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="character-card">
+                <a href="rowan.html">
+                    <img src="../assets/characters/Rowan.png" alt="Rowan">
+                    <div class="info">
+                        <h2>Rowan</h2>
+                        <p class="subtitle">Human Gloom Stalker</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <hr>
+        <footer>
+            <p>Keys From The Golden Vault • Campaign Journal</p>
+        </footer>
+    </main>
+</body>
+
+</html>

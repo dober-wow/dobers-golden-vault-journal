@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Feather - Golden Vault Journal</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .character-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .character-header h1 {
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .portrait {
+            max-width: 400px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: top;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.02);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <a href="index.html" class="back-link">← Back to Team</a>
+
+        <div class="character-header">
+            <h1>Blood Feather</h1>
+            <p class="subtitle">Kenku Soulknife Rogue</p>
+        </div>
+
+        <blockquote>
+            <em>"Chains are meant to be broken."</em>
+        </blockquote>
+
+        <img src="../assets/characters/blood_feather_whispers_clean_1768150567897.png" alt="Blood Feather"
+            class="portrait">
+
+        <h2>Description</h2>
+        <p>Blood Feather is a striking Kenku with jet-black plumage that seems to absorb the surrounding light. A crown
+            of vivid crimson feathers rises from their head—a rare and distinctive trait that earned them their name.
+            Their eyes burn with an unsettling red glow, hinting at the psionic power that courses through them.</p>
+
+        <p>They wear weathered leather armor beneath a dark, feathered cloak that blends seamlessly with their natural
+            plumage. Crossed leather straps and pouches adorn their chest, carrying thieves' tools and small vials of
+            mysterious liquids in green and purple hues. When threatened, Blood Feather manifests twin <strong>Psychic
+                Blades</strong>—ethereal daggers of crackling violet energy that leave no physical trace on their
+            victims.</p>
+
+        <h2>Personality</h2>
+        <ul>
+            <li><strong>Traits:</strong> Always has a plan; calm in all situations.</li>
+            <li><strong>Ideal:</strong> Freedom.</li>
+            <li><strong>Bond:</strong> Owes a debt to a generous benefactor.</li>
+            <li><strong>Flaw:</strong> Okay with an innocent person being in prison for a crime they committed.</li>
+        </ul>
+
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="../assets/characters/blood_feather_action_transparent_1768150416402.png"
+                alt="Blood Feather in action">
+            <img src="../assets/characters/blood_feather_psychic_blades_1768150098058.png"
+                alt="Blood Feather with Psychic Blades">
+        </div>
+
+        <hr>
+        <footer>
+            <p>Keys From The Golden Vault • Campaign Journal</p>
+        </footer>
+    </main>
+</body>
+
+</html>

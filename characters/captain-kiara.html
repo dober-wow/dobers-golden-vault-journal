@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captain Kiara Tawny - Golden Vault Journal</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .character-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .character-header h1 {
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .portrait {
+            max-width: 400px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: top;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.02);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <a href="index.html" class="back-link">← Back to Team</a>
+
+        <div class="character-header">
+            <h1>Captain Kiara Tawny</h1>
+            <p class="subtitle">Tabaxi Battle Master Fighter</p>
+        </div>
+
+        <blockquote>
+            <em>"Discipline wins wars. Instinct wins battles."</em>
+        </blockquote>
+
+        <img src="../assets/characters/Captain_Kiara_Tawny.png" alt="Captain Kiara Tawny" class="portrait">
+
+        <h2>Description</h2>
+        <p>Captain Kiara Tawny is a notably short Tabaxi—standing barely four feet tall—but what she lacks in height she
+            more than makes up for in presence. Her soft, tawny-gold fur is marked with subtle tabby stripes, and her
+            piercing green eyes carry the weight of countless campaigns, constantly scanning for threats even in moments
+            of calm. Despite her small stature, her commanding demeanor ensures she is never overlooked.</p>
+
+        <p>She wears practical, battle-scarred leather armor—dark brown with a flat, military-style chest piece that
+            prioritizes function over form. A simple brown hooded cloak is draped over her shoulders. The leather shows
+            the marks of many battles: deep scratches, careful repairs, and weathering that speak to years of hard
+            service.</p>
+
+        <p>In combat, Kiara dual-wields a pair of silver-hilted rapiers with the precision of a trained Battle Master.
+            Her movements are fluid and cat-like, combining her natural Tabaxi agility with military discipline honed
+            through years as a soldier.</p>
+
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="../assets/characters/kiara_action_transparent.png" alt="Kiara in combat">
+            <img src="../assets/characters/kiara_savage_attacker_transparent.png" alt="Kiara's savage attack">
+        </div>
+
+        <hr>
+        <footer>
+            <p>Keys From The Golden Vault • Campaign Journal</p>
+        </footer>
+    </main>
+</body>
+
+</html>

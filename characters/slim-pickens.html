@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slim Pickens - Golden Vault Journal</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .character-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .character-header h1 {
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .portrait {
+            max-width: 400px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: top;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.02);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <a href="index.html" class="back-link">← Back to Team</a>
+
+        <div class="character-header">
+            <h1>Slim Pickens</h1>
+            <p class="subtitle">Lightfoot Halfling Rogue / Warlock</p>
+        </div>
+
+        <img src="../assets/characters/Slim_Pickens_portrait.png" alt="Slim Pickens" class="portrait">
+
+        <h2>Description</h2>
+        <p>A weathered Lightfoot Halfling with a roguish glint in his pale grey-blue eyes. His face is creased from
+            years of squinting through smoke and shadow, with a perpetual half-smirk that suggests he knows something
+            you don't. A thin cigarette dangles from the corner of his mouth.</p>
+
+        <p>He wears a wide-brimmed black hat adorned with a vulture feather tucked into its silver-buckled band, casting
+            his features in permanent dramatic shadow. His dark leather duster is worn and travel-stained, the collar
+            turned up against his thin, scraggly beard, and his gloved hands are never far from his belt or his blades.
+            Worn leather cowboy boots—scuffed and dusty from countless miles—complete the gunslinger aesthetic.</p>
+
+        <h3>The Vulture Familiar</h3>
+        <p>A gaunt vulture with mottled dark plumage and piercing amber eyes that seem to hold an unsettling
+            intelligence. Imposingly large—nearly half the height of the halfling himself when perched—its bald,
+            wrinkled head and hunched posture give it a sinister appearance, hinting at its connection to something
+            otherworldly—the Djinni patron that binds it to Slim.</p>
+
+        <h3>Together</h3>
+        <p>The pair move as one—the vulture perched on Slim's shoulder like a dark omen given form. Where Slim's eyes
+            might wander or his attention drift, the vulture watches, and vice versa. They share a quiet, unspoken
+            partnership; the halfling's smug confidence is matched by his familiar's grim patience. Together, they look
+            like trouble waiting to happen—or trouble that's already arrived.</p>
+
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="../assets/characters/Slim_Pickens_create_bonfire.png" alt="Slim casting Create Bonfire">
+            <img src="../assets/characters/Slim_Pickens_stealth.png" alt="Slim in stealth">
+            <img src="../assets/characters/Slim_Pickens_sleight_of_hand.png" alt="Slim using sleight of hand">
+        </div>
+
+        <hr>
+        <footer>
+            <p>Keys From The Golden Vault • Campaign Journal</p>
+        </footer>
+    </main>
+</body>
+
+</html>
