@@ -1,0 +1,174 @@
+/* D&D Campaign Journal - Dark Parchment Theme */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
+
+:root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #252525;
+    --bg-accent: #2d2520;
+    --text-primary: #e8e4d9;
+    --text-secondary: #b8a88a;
+    --accent-gold: #c9a959;
+    --accent-red: #8b3a3a;
+    --border-color: #3d3428;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Cinzel', 'Georgia', serif;
+    color: var(--accent-gold);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+h1 {
+    font-size: 2.2rem;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-gold);
+}
+
+h2 {
+    font-size: 1.6rem;
+    color: var(--text-secondary);
+}
+
+h3 {
+    font-size: 1.3rem;
+    border: none;
+}
+
+blockquote {
+    background: var(--bg-accent);
+    border-left: 4px solid var(--accent-gold);
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+blockquote em {
+    color: var(--text-primary);
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+    margin: 2rem 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    margin: 1rem 0;
+    display: block;
+}
+
+ul,
+ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin: 0.5rem 0;
+}
+
+strong {
+    color: var(--accent-gold);
+}
+
+p {
+    margin: 1rem 0;
+}
+
+/* Audio Player - Custom Dark Theme */
+audio {
+    width: 100%;
+    height: 48px;
+    margin: 1rem 0;
+    border-radius: 8px;
+    outline: none;
+}
+
+audio::-webkit-media-controls-panel {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+audio::-webkit-media-controls-play-button {
+    background-color: var(--accent-gold);
+    border-radius: 50%;
+    transform: scale(1.1);
+}
+
+audio::-webkit-media-controls-play-button:hover {
+    background-color: #d4b76a;
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    color: var(--text-secondary);
+    font-family: 'Georgia', serif;
+    font-size: 0.85rem;
+}
+
+audio::-webkit-media-controls-timeline {
+    background: var(--bg-primary);
+    border-radius: 4px;
+    height: 6px;
+}
+
+audio::-webkit-media-controls-volume-slider {
+    background: var(--bg-primary);
+    border-radius: 4px;
+}
+
+audio::-webkit-media-controls-mute-button {
+    background-color: transparent;
+    filter: sepia(1) saturate(2) hue-rotate(10deg) brightness(0.9);
+}
+
+footer {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    main {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+}
