@@ -39,6 +39,26 @@
         .back-link:hover {
             text-decoration: underline;
         }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: top;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.02);
+        }
     </style>
 </head>
 
@@ -75,6 +95,13 @@
             feet, head cocked slightly as if perpetually listening for sounds others cannot hear. In bright light, Rowan
             seems almost uncomfortable—too exposed, too visible. But catch them in shadow, and you'll see the
             transformation: a predator coming home, melting into the darkness until only their watchful eyes remain.</p>
+
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="../assets/characters/rowan_facing_away.png" alt="Rowan from behind">
+            <img src="../assets/characters/rowan_side_sitting.png" alt="Rowan sitting">
+            <img src="../assets/characters/rowan_jumping.png" alt="Rowan jumping">
+        </div>
 
         <hr>
         <footer>

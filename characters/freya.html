@@ -39,6 +39,26 @@
         .back-link:hover {
             text-decoration: underline;
         }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: top;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.02);
+        }
     </style>
 </head>
 
@@ -73,6 +93,13 @@
             and pouches for thieves' tools. A hooded traveling cloak in deep purple drapes over one shoulder, ready to
             conceal her features when discretion is needed. At her hip hangs her <strong>Moon-Touched Sword</strong>—a
             shortsword that glows with pale, cold moonlight, cutting through darkness wherever she walks.</p>
+
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="../assets/characters/freya_facing_away.png" alt="Freya from behind">
+            <img src="../assets/characters/freya_side_sitting.png" alt="Freya sitting">
+            <img src="../assets/characters/freya_jumping.png" alt="Freya jumping">
+        </div>
 
         <hr>
         <footer>
