@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Atlas - Golden Vault Journal</title>
+    <meta name="description" content="Explore the locations of the Keys From The Golden Vault campaign">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .location-section {
+            margin-bottom: 3rem;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .location-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(201, 169, 89, 0.2);
+        }
+
+        .location-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            padding: 1.25rem;
+        }
+
+        .location-card h3 {
+            margin: 0 0 0.5rem 0;
+            border: none;
+            padding: 0;
+            font-size: 1.15rem;
+            color: var(--accent-gold);
+        }
+
+        .location-card .type {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-card .description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+            font-style: italic;
+        }
+
+        .section-intro {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .landmark-group {
+            margin-top: 1rem;
+        }
+
+        .landmark-group-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 1.5rem 0 0.75rem 0;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <a href="../index.html" class="back-link">← Back to Journal</a>
+
+        <h1>🗺️ World Atlas</h1>
+        <p style="text-align: center; color: var(--text-secondary); font-style: italic;">
+            Explore the lands where shadows deal and fortunes fall.
+        </p>
+
+        <!-- Worlds Section -->
+        <section class="location-section">
+            <h2>🌍 Regions</h2>
+            <p class="section-intro">The greater world beyond city walls</p>
+            <div class="location-grid">
+                <div class="location-card">
+                    <a href="worlds/varkenbluff-region.html">
+                        <span class="type">World Region</span>
+                        <h3>Varkenbluff Region</h3>
+                        <p class="description">A coastal territory where ancient horrors sleep beneath academic ambition
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settlements Section -->
+        <section class="location-section">
+            <h2>🏰 Settlements</h2>
+            <p class="section-intro">Cities and towns of the realm</p>
+            <div class="location-grid">
+                <div class="location-card">
+                    <a href="settlements/varkenbluff.html">
+                        <span class="type">Major City</span>
+                        <h3>Varkenbluff</h3>
+                        <p class="description">A cosmopolitan city of academics, aristocrats, and careful criminals</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Landmarks Section -->
+        <section class="location-section">
+            <h2>📍 Landmarks</h2>
+            <p class="section-intro">Notable locations and points of interest</p>
+
+            <div class="landmark-group">
+                <p class="landmark-group-title">Varkenbluff — Academic District</p>
+                <div class="location-grid">
+                    <div class="location-card">
+                        <a href="landmarks/museum-of-natural-history.html">
+                            <span class="type">Museum</span>
+                            <h3>Museum of Natural History</h3>
+                            <p class="description">The city's premier showcase of archaeology and natural wonders</p>
+                        </a>
+                    </div>
+                    <div class="location-card">
+                        <a href="landmarks/university.html">
+                            <span class="type">University</span>
+                            <h3>Varkenbluff University</h3>
+                            <p class="description">The cosmopolitan jewel of scholarship overlooking the river</p>
+                        </a>
+                    </div>
+                    <div class="location-card">
+                        <a href="landmarks/sages-quill-tavern.html">
+                            <span class="type">Tavern</span>
+                            <h3>The Sage's Quill</h3>
+                            <p class="description">A quiet tavern catering to the city's intellectuals</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="landmark-group">
+                <p class="landmark-group-title">Varkenbluff — Industrial Waterfront</p>
+                <div class="location-grid">
+                    <div class="location-card">
+                        <a href="landmarks/industrial-waterfront.html">
+                            <span class="type">District</span>
+                            <h3>Industrial Waterfront</h3>
+                            <p class="description">The salt-crusted, working-class heart of maritime trade</p>
+                        </a>
+                    </div>
+                    <div class="location-card">
+                        <a href="landmarks/drydock-cellar.html">
+                            <span class="type">Hideout</span>
+                            <h3>The Drydock Cellar</h3>
+                            <p class="description">The heist team's hidden base of operations</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="landmark-group">
+                <p class="landmark-group-title">Varkenbluff Region — Outside the City</p>
+                <div class="location-grid">
+                    <div class="location-card">
+                        <a href="landmarks/afterlife-casino.html">
+                            <span class="type">Casino</span>
+                            <h3>The Afterlife Casino</h3>
+                            <p class="description">Nine Hells–themed gambling den built into a cavern</p>
+                        </a>
+                    </div>
+                    <div class="location-card">
+                        <a href="landmarks/murkmire-dig-site.html">
+                            <span class="type">Excavation</span>
+                            <h3>Murkmire Dig Site</h3>
+                            <p class="description">The archaeological excavation that unearthed the eldritch egg</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+        <footer>
+            <p>Keys From The Golden Vault • Campaign Journal</p>
+        </footer>
+    </main>
+</body>
+
+</html>

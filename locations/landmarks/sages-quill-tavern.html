@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sage's Quill - Golden Vault Journal</title>
+    <meta name="description" content="The Sage's Quill Tavern - A quiet tavern for intellectuals">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .location-meta {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .location-meta table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .location-meta td {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .location-meta tr:last-child td {
+            border-bottom: none;
+        }
+
+        .location-meta td:first-child {
+            color: var(--accent-gold);
+            font-weight: 600;
+            width: 40%;
+        }
+
+        .location-meta a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .location-meta a:hover {
+            text-decoration: underline;
+        }
+
+        .ambiance-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .ambiance-table th,
+        .ambiance-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ambiance-table th {
+            color: var(--accent-gold);
+            font-weight: 600;
+            width: 20%;
+        }
+
+        .session-notes {
+            background: var(--bg-accent);
+            border-left: 4px solid var(--accent-gold);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .session-notes h3 {
+            margin-top: 0;
+            border: none;
+        }
+
+        .session-notes ul {
+            margin-bottom: 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <a href="../index.html" class="back-link">← Back to Atlas</a>
+
+        <h1>🍺 The Sage's Quill</h1>
+        <p style="text-align: center; color: var(--text-secondary); font-style: italic;">
+            A quiet tavern catering to Varkenbluff's intellectuals
+        </p>
+
+        <img src="../../assets/locations/tavern_reference.png" alt="The Sage's Quill Tavern"
+            style="margin: 1.5rem auto; display: block;">
+
+        <hr>
+
+        <h2>Overview</h2>
+        <p>The Sage's Quill is a quiet, plush tavern that caters to the city's academics and intellectuals. Located
+            next to the Museum of Natural History and less than a mile from Varkenbluff University, it serves as a
+            meeting place for scholars, researchers, and—on occasion—operatives receiving mission briefings.</p>
+        <p>The heist team first met <strong>Dr. Cassee Dannell</strong> here to discuss the Murkmire Stone assignment.
+        </p>
+
+        <h2>Location</h2>
+        <div class="location-meta">
+            <table>
+                <tr>
+                    <td>Parent Settlement</td>
+                    <td><a href="../settlements/varkenbluff.html">Varkenbluff</a></td>
+                </tr>
+                <tr>
+                    <td>District</td>
+                    <td>Academic District</td>
+                </tr>
+                <tr>
+                    <td>Proximity</td>
+                    <td>Adjacent to Museum of Natural History; near Varkenbluff University</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>Physical Details</h2>
+
+        <h3>Exterior</h3>
+        <p>An unassuming storefront with a hand-painted sign depicting a feathered quill and open book.</p>
+
+        <h3>Interior</h3>
+        <ul>
+            <li>Plush velvet seating in booths with high backs (for privacy)</li>
+            <li>Bookshelves lining the walls</li>
+            <li>Quiet atmosphere; no rowdy patrons</li>
+            <li>Warm fireplace</li>
+            <li>Tables sized for discrete conversations</li>
+        </ul>
+
+        <h2>Ambiance</h2>
+        <table class="ambiance-table">
+            <tr>
+                <th>Sense</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><strong>Sight</strong></td>
+                <td>Warm candlelight; leather-bound books; patrons reading or conversing quietly</td>
+            </tr>
+            <tr>
+                <td><strong>Sound</strong></td>
+                <td>Soft murmurs; crackling fire; turning pages</td>
+            </tr>
+            <tr>
+                <td><strong>Smell</strong></td>
+                <td>Old paper; pipe tobacco; mulled wine</td>
+            </tr>
+        </table>
+
+        <div class="session-notes">
+            <h3>⚔️ Session History</h3>
+            <ul>
+                <li>✓ Initial meeting with Dr. Dannell for Heist 1</li>
+            </ul>
+        </div>
+
+        <hr>
+        <footer>
+            <p>Keys From The Golden Vault • Campaign Journal</p>
+        </footer>
+    </main>
+</body>
+
+</html>

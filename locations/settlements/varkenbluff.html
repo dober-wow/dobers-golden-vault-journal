@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varkenbluff - Golden Vault Journal</title>
+    <meta name="description"
+        content="Varkenbluff - A cosmopolitan city of academics, aristocrats, and careful criminals">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .location-meta {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .location-meta table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .location-meta td {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .location-meta tr:last-child td {
+            border-bottom: none;
+        }
+
+        .location-meta td:first-child {
+            color: var(--accent-gold);
+            font-weight: 600;
+            width: 40%;
+        }
+
+        .ascii-map {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            line-height: 1.2;
+            color: var(--text-secondary);
+        }
+
+        .district {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .district h3 {
+            margin-top: 0;
+            border: none;
+        }
+
+        .district-character {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .landmark-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .landmark-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .landmark-list li:last-child {
+            border-bottom: none;
+        }
+
+        .landmark-list a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .landmark-list a:hover {
+            text-decoration: underline;
+        }
+
+        .landmark-list .desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .nearby-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .nearby-table th,
+        .nearby-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nearby-table th {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .nearby-table a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .nearby-table a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <a href="../index.html" class="back-link">← Back to Atlas</a>
+
+        <h1>🏰 Varkenbluff</h1>
+        <p style="text-align: center; color: var(--text-secondary); font-style: italic;">
+            A cosmopolitan city of academics, aristocrats, and careful criminals
+        </p>
+
+        <img src="../../assets/locations/varkenbluff_map.png" alt="Varkenbluff Settlement Map"
+            style="margin: 1.5rem auto; display: block;">
+
+        <hr>
+
+        <h2>Overview</h2>
+        <p>Varkenbluff is a prosperous city known for its prestigious university, world-class museum, and bustling
+            waterfront. The city blends academic prestige with maritime commerce, creating a cosmopolitan atmosphere
+            where scholars and smugglers alike find their footing.</p>
+        <p>The heist team has established their base of operations beneath the city's Industrial Waterfront, using the
+            hidden Drydock Cellar as a sanctuary between jobs.</p>
+
+        <h2>Geography</h2>
+        <div class="location-meta">
+            <table>
+                <tr>
+                    <td>Region</td>
+                    <td>Coastal city, river delta — <a href="../worlds/varkenbluff-region.html">Varkenbluff Region</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Population</td>
+                    <td>Large (metropolitan)</td>
+                </tr>
+                <tr>
+                    <td>Government</td>
+                    <td>City council; Mayor</td>
+                </tr>
+                <tr>
+                    <td>Economy</td>
+                    <td>Maritime trade, academia, tourism</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>Districts</h2>
+
+        <div class="district">
+            <h3>Academic District</h3>
+            <p class="district-character">Character: Prestigious, scholarly, refined</p>
+            <ul class="landmark-list">
+                <li>
+                    <a href="../landmarks/museum-of-natural-history.html">Museum of Natural History</a>
+                    <span class="desc"> — The city's premier showcase of archaeology and natural wonders</span>
+                </li>
+                <li>
+                    <a href="../landmarks/university.html">Varkenbluff University</a>
+                    <span class="desc"> — The region's most prestigious institution of higher learning</span>
+                </li>
+                <li>
+                    <a href="../landmarks/sages-quill-tavern.html">Sage's Quill Tavern</a>
+                    <span class="desc"> — A quiet tavern catering to intellectuals</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="district">
+            <h3>Industrial Waterfront</h3>
+            <p class="district-character">Character: Working-class, maritime, quietly lawless</p>
+            <ul class="landmark-list">
+                <li>
+                    <a href="../landmarks/industrial-waterfront.html">Industrial Waterfront District</a>
+                    <span class="desc"> — Docks, warehouses, and boat repair yards</span>
+                </li>
+                <li>
+                    <a href="../landmarks/drydock-cellar.html">The Drydock Cellar</a>
+                    <span class="desc"> — The heist team's hidden base beneath Kraeger's Boatyard</span>
+                </li>
+            </ul>
+        </div>
+
+        <h2>City Layout</h2>
+        <pre class="ascii-map">
+                          MOUNTAINS (North)
+                   ↑ 3 miles to Afterlife Casino
+                               │
+                             River
+                               │
+╔══════════════════════════════╪══════════════════════════════╗
+║              CITY WALLS      │                              ║
+║  ┌─────────────────────┐     │     ┌─────────────────────┐  ║
+║  │   ACADEMIC DISTRICT │     │     │  RESIDENTIAL DIST.  │  ║
+║  │                     │     │     │                     │  ║
+║  │  ╔═══════════════╗  │     │     │  ┌───┐ ┌───┐ ┌───┐  │  ║
+║  │  ║  UNIVERSITY   ║  │     │     │  │ ⌂ │ │ ⌂ │ │ ⌂ │  │  ║
+║  │  ║  ┌──────┐     ║  │     │     │  └───┘ └───┘ └───┘  │  ║
+║  │  ║  │CLOCK │     ║  │═════╪═════│  ┌───┐ ┌───┐ ┌───┐  │  ║
+║  │  ║  │TOWER │     ║  │  NORTH    │  │ ⌂ │ │ ⌂ │ │ ⌂ │  │  ║
+║  │  ║  └──────┘     ║  │  BRIDGE   │  └───┘ └───┘ └───┘  │  ║
+║  │  ╚═══════════════╝  │     │     │                     │  ║
+║  │                     │     │     │  ┌───┐ ┌───┐ ┌───┐  │  ║
+║  │  ╔═══════════════╗  │═════╪═════│  │ ⌂ │ │ ⌂ │ │ ⌂ │  │  ║
+║  │  ║    MUSEUM     ║  │  SOUTH    │  └───┘ └───┘ └───┘  │  ║
+║  │  ║   (DOMED)     ║  │  BRIDGE   │                     │  ║
+║  │  ╚═══════════════╝  │     │     │                     │  ║
+║  │                     │     │     │                     │  ║
+║  │  ┌───────────────┐  │     │     │                     │  ║
+║  │  │ SAGE'S QUILL  │  │     │     │                     │  ║
+║  │  │   TAVERN  🍺  │  │     │     │                     │  ║
+║  │  └───────────────┘  │     │     │                     │  ║
+║  └─────────────────────┘     │     └─────────────────────┘  ║
+║                              │                              ║
+║  ┌──────────────────────────────────────────────────────┐   ║
+║  │              INDUSTRIAL WATERFRONT                   │   ║
+║  │                                                      │   ║
+║  │  [DOCKS]     ════RIVER════        [WAREHOUSES]       │   ║
+║  │   ⚓  ⚓           │                  ▢  ▢  ▢         │   ║
+║  │  ┌──────┐    ┌────┴────┐          ┌──────────────┐   │   ║
+║  │  │ SHIP │    │ HARBOR  │          │   KRAEGER'S  │   │   ║
+║  │  │  ⛵  │    │  MOUTH  │          │   BOATYARD   │   ║
+║  │  └──────┘    └─────────┘          │  (Drydock    │   │   ║
+║  │                                   │   Cellar ↓)  │   │   ║
+║  │                                   └──────────────┘   │   ║
+║  └──────────────────────────────────────────────────────┘   ║
+╚═════════════════════════════════════════════════════════════╝
+                          COAST / SEA (South)
+        </pre>
+
+        <h2>Notable Features</h2>
+        <div class="location-meta">
+            <table>
+                <tr>
+                    <td>City Walls</td>
+                    <td>Moderate defenses; not a military city</td>
+                </tr>
+                <tr>
+                    <td>River</td>
+                    <td>Flows from mountains through city to coast</td>
+                </tr>
+                <tr>
+                    <td>Harbor</td>
+                    <td>Major shipping hub</td>
+                </tr>
+                <tr>
+                    <td>Watch Patrols</td>
+                    <td>Active in wealthy/academic areas; sparse on waterfront</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>Nearby Locations</h2>
+        <table class="nearby-table">
+            <tr>
+                <th>Location</th>
+                <th>Distance</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td><a href="../landmarks/afterlife-casino.html">Afterlife Casino</a></td>
+                <td>3 miles north</td>
+                <td>In mountain cavern</td>
+            </tr>
+            <tr>
+                <td><a href="../landmarks/murkmire-dig-site.html">Murkmire Dig Site</a></td>
+                <td>Outside city</td>
+                <td>In swamplands</td>
+            </tr>
+        </table>
+
+        <hr>
+        <footer>
+            <p>Keys From The Golden Vault • Campaign Journal</p>
+        </footer>
+    </main>
+</body>
+
+</html>

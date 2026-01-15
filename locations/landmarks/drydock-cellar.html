@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Drydock Cellar - Golden Vault Journal</title>
+    <meta name="description" content="The Drydock Cellar - The heist team's hidden base of operations">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .location-meta {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .location-meta table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .location-meta td {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .location-meta tr:last-child td {
+            border-bottom: none;
+        }
+
+        .location-meta td:first-child {
+            color: var(--accent-gold);
+            font-weight: 600;
+            width: 40%;
+        }
+
+        .location-meta a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .location-meta a:hover {
+            text-decoration: underline;
+        }
+
+        .ascii-map {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.65rem;
+            line-height: 1.2;
+            color: var(--text-secondary);
+        }
+
+        .ambiance-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .ambiance-table th,
+        .ambiance-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ambiance-table th {
+            color: var(--accent-gold);
+            font-weight: 600;
+            width: 20%;
+        }
+
+        .npc-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .npc-card h4 {
+            margin: 0 0 0.5rem 0;
+            border: none;
+            color: var(--accent-gold);
+        }
+
+        .npc-card .details {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .warning-box {
+            background: var(--bg-accent);
+            border-left: 4px solid var(--accent-red);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h4 {
+            margin: 0 0 0.5rem 0;
+            border: none;
+            color: var(--accent-red);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .character-space {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.75rem 0;
+        }
+
+        .character-space h4 {
+            margin: 0 0 0.5rem 0;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .character-space p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <a href="../index.html" class="back-link">← Back to Atlas</a>
+
+        <h1>🏴‍☠️ The Drydock Cellar</h1>
+        <p style="text-align: center; color: var(--text-secondary); font-style: italic;">
+            The heist team's hidden base of operations
+        </p>
+
+        <hr>
+
+        <h2>Overview</h2>
+        <p>Beneath Kraeger's Boatyard—an aging ship repair facility on Varkenbluff's industrial waterfront—lies a
+            forgotten chamber that time and tide abandoned decades ago. The <strong>Drydock Cellar</strong> was once
+            used to store ship supplies during the yard's heyday, but flooding and disrepair led the surface operation
+            to seal it off and forget it existed.</p>
+        <p>Slim Pickens didn't forget. He used it during his smuggling days, and when the team needed a place to lay
+            low after the museum job, he knew exactly where to go.</p>
+
+        <h2>Location</h2>
+        <div class="location-meta">
+            <table>
+                <tr>
+                    <td>Parent Settlement</td>
+                    <td><a href="../settlements/varkenbluff.html">Varkenbluff</a></td>
+                </tr>
+                <tr>
+                    <td>District</td>
+                    <td><a href="industrial-waterfront.html">Industrial Waterfront</a></td>
+                </tr>
+                <tr>
+                    <td>Proximity</td>
+                    <td>Half-mile from main docks; 3 miles south of the Afterlife Casino</td>
+                </tr>
+                <tr>
+                    <td>Cover</td>
+                    <td>Kraeger's Boatyard (semi-abandoned, run by old Halvard Kraeger)</td>
+                </tr>
+            </table>
+        </div>
+
+        <h3>Access Points</h3>
+        <div class="location-meta">
+            <table>
+                <tr>
+                    <td>Tide Hatch</td>
+                    <td>Iron grate in the boatyard floor, only accessible at low tide (Primary entrance)</td>
+                </tr>
+                <tr>
+                    <td>The Bilge Pipe</td>
+                    <td>Drainage tunnel from the harbor, requires wading (Emergency exit)</td>
+                </tr>
+                <tr>
+                    <td>Kraeger's Shop</td>
+                    <td>Through a false panel in the tool storage room (Discreet entrance)</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="warning-box">
+            <h4>⚠️ Tide Dependency</h4>
+            <p>The main hatch floods at high tide. The team must time their comings and goings—or use the shop entrance
+                and risk being seen by Kraeger's occasional customers.</p>
+        </div>
+
+        <h2>The Hideout</h2>
+
+        <h3>Main Chamber — "The Bones"</h3>
+        <blockquote>
+            The curved wooden ribs of an unfinished ship's hull arch overhead like the skeleton of some great
+            leviathan. Decades ago, workers abandoned her mid-construction, and now her bones serve as the ceiling of
+            your sanctuary. Barnacle-crusted stone pillars rise from the damp floor, festooned with old rope and rusted
+            chains. Brass lanterns swing gently on hooks, their amber glow carving warm islands of light from the
+            maritime darkness. The air smells of salt, tar, and secrets kept.
+        </blockquote>
+        <p><strong>Dimensions:</strong> Roughly 40 ft. × 30 ft., with a 15 ft. ceiling at the hull's apex</p>
+
+        <h3>Personal Spaces</h3>
+        <p>Each team member has claimed a corner or alcove of the main chamber:</p>
+
+        <div class="character-space">
+            <h4>Slim's Nook</h4>
+            <p>Near the shop entrance. Hammock between pillars, smuggling ledger in Thieves' Cant, brass oil lamp
+                shrine to his Djinni patron, and his vulture familiar's favorite perch.</p>
+        </div>
+
+        <div class="character-space">
+            <h4>Blood Feather's Roost</h4>
+            <p>Highest point—a wooden platform 10 ft. up, wedged between hull ribs. Nest of salvaged blankets, excellent
+                vantage point, and a collection of shiny objects.</p>
+        </div>
+
+        <div class="character-space">
+            <h4>Captain Kiara's Station</h4>
+            <p>Nearest the tide hatch—first line of defense. Military-neat bedroll, weapons maintenance kit, campaign
+                medals, and a duty roster largely ignored by the team.</p>
+        </div>
+
+        <div class="character-space">
+            <h4>Freya's Corner</h4>
+            <p>Deepest in shadow—her Moon-Touched Sword provides the only light. Velvet curtain for privacy, cushions,
+                arcane components in labeled jars, and a cracked scrying mirror.</p>
+        </div>
+
+        <div class="character-space">
+            <h4>Rowan's Watch Post</h4>
+            <p>By the bilge entrance—covering the escape route. Sleeping mat positioned for quick exit, bowstring wax,
+                and monster trophy collection. Never sleeps deeply.</p>
+        </div>
+
+        <h2>Hideout Layout</h2>
+        <pre class="ascii-map">
+                ┌─────────────────────────────────────┐
+                │          KRAEGER'S SHOP             │
+                │         (False Panel Exit)          │
+                └──────────────┬──────────────────────┘
+                               │
+ ┌─────────────────────────────┴────────────────────────────┐
+ │                                                          │
+ │   [Slim's     ════════════════════════════   [Blood      │
+ │    Nook]      ║  HULL CEILING (above)   ║    Feather's   │
+ │               ║                         ║    Roost]      │
+ │    ┌──────────╨─────────────────────────╨──────────┐     │
+ │    │                                               │     │
+ │    │              ┌─────────────┐                  │     │
+ │    │              │  WAR TABLE  │                  │     │
+ │    │              └─────────────┘                  │     │
+ │    │                                               │     │
+ │    │  [Kiara's    ◉ Brazier       [Anchor  ▓▓▓    │     │
+ │    │   Station]                    Alcove] ▓▓▓    │     │
+ │    │                                       ▓▓▓    │     │
+ │    └───────────────────────────────────────┬──────┘     │
+ │                                            │            │
+ │   [Freya's                    ┌────────────┴───┐        │
+ │    Corner]                    │   VAULT BAY    │        │
+ │                               │  (Low Arch)    │        │
+ │   [Rowan's                    └────────────────┘        │
+ │    Post]                                                │
+ │         │                                               │
+ └─────────┼───────────────────────────────────────────────┘
+           │
+ ┌─────────┴─────────┐       ┌────────────────────────┐
+ │    TIDE HATCH     │       │    THE BILGE           │
+ │  (Main Entrance)  │───────│  (Steps Down)          │
+ │   ≈≈≈≈≈≈≈≈≈≈≈     │       │    → Escape Tunnel →   │
+ └───────────────────┘       └────────────────────────┘
+        </pre>
+
+        <h2>Ambiance</h2>
+        <table class="ambiance-table">
+            <tr>
+                <th>Sense</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><strong>Sight</strong></td>
+                <td>Dancing lantern shadows on curved hull ribs; glinting brass fittings; occasional crab skitter</td>
+            </tr>
+            <tr>
+                <td><strong>Sound</strong></td>
+                <td>Creaking timber as tide shifts; distant harbor bells; muffled footsteps from boatyard above</td>
+            </tr>
+            <tr>
+                <td><strong>Smell</strong></td>
+                <td>Brine, tar, old wood, coal smoke from the brazier, something faintly rotting in the bilge</td>
+            </tr>
+            <tr>
+                <td><strong>Touch</strong></td>
+                <td>Damp cold that seeps into bones; rough rope textures; smooth-worn wood of the war table</td>
+            </tr>
+        </table>
+
+        <h2>Key NPCs</h2>
+        <div class="npc-card">
+            <h4>Halvard Kraeger</h4>
+            <p class="details">Human (elderly) • True Neutral • Boatyard Owner</p>
+            <p>A grizzled old shipwright with salt-crusted whiskers and hands like knotted rope. Half-deaf, fully
+                discreet. He knows the cellar exists and that Slim uses it sometimes—but nothing about the Golden Vault
+                or what the team actually does.</p>
+        </div>
+
+        <hr>
+
+        <p style="text-align: center; font-style: italic; color: var(--text-secondary);">
+            <em>"When the tide goes out, we go in. When the tide comes in, we disappear."</em><br>
+            — Slim Pickens
+        </p>
+
+        <hr>
+        <footer>
+            <p>Keys From The Golden Vault • Campaign Journal</p>
+        </footer>
+    </main>
+</body>
+
+</html>

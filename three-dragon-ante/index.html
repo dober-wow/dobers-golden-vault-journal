@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three-Dragon Ante | Afterlife Casino</title>
+    <meta name="description" content="Play Three-Dragon Ante at the Afterlife Casino">
+    <link rel="stylesheet" href="game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div class="game-header">
+            <h1>🐉 Three-Dragon Ante</h1>
+            <a href="../index.html" class="back-link">← Back to Journal</a>
+        </div>
+
+        <div class="game-container">
+            <!-- Game Table -->
+            <div class="game-table" id="game-table">
+                <!-- Opponents Row -->
+                <div class="opponents-row">
+                    <!-- AI Player 1 -->
+                    <div class="player-area ai-player" id="ai1-area">
+                        <div class="player-name" id="ai1-name">Infernal Dealer</div>
+                        <div class="player-gold" id="ai1-gold">🪙 30</div>
+                        <div class="player-hand ai-hand" id="ai1-hand"></div>
+                        <div class="flight-area" id="ai1-flight"></div>
+                    </div>
+
+                    <!-- AI Player 2 -->
+                    <div class="player-area ai-player" id="ai2-area">
+                        <div class="player-name" id="ai2-name">High Roller</div>
+                        <div class="player-gold" id="ai2-gold">🪙 30</div>
+                        <div class="player-hand ai-hand" id="ai2-hand"></div>
+                        <div class="flight-area" id="ai2-flight"></div>
+                    </div>
+                </div>
+
+                <!-- Center - Stakes -->
+                <div class="center-area">
+                    <div class="stakes-pile">
+                        <span class="stakes-label">Stakes</span>
+                        <span class="stakes-amount" id="stakes-amount">0</span>
+                    </div>
+                </div>
+
+                <!-- Player Section -->
+                <div class="player-section">
+                    <div class="flight-area" id="player-flight"></div>
+                    <div class="player-area">
+                        <div class="player-name">You</div>
+                        <div class="player-gold" id="player-gold">🪙 30</div>
+                    </div>
+                    <div class="player-hand" id="player-hand"></div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="info-panel">
+                    <h3>🎰 Game Status</h3>
+                    <div id="game-phase">Starting...</div>
+                    <div id="game-message">Welcome to the Afterlife Casino</div>
+                </div>
+
+                <div class="info-panel">
+                    <h3>📜 Game Log</h3>
+                    <div class="game-log" id="game-log"></div>
+                </div>
+
+                <button id="new-game-btn">🎴 New Game</button>
+
+                <div class="info-panel">
+                    <h3>📖 How to Play</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">
+                        <strong>Ante:</strong> Choose a card. Highest leads and sets stakes.<br><br>
+                        <strong>Play:</strong> Play 3 cards to build your flight. Powers trigger if your card ≤ previous
+                        card.<br><br>
+                        <strong>Score:</strong> Highest flight total wins the stakes. Color/Strength flights earn
+                        bonuses!<br><br>
+                        <strong>Win:</strong> Last player with gold wins!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="cards.js"></script>
+    <script src="game.js"></script>
+    <script src="ai.js"></script>
+    <script src="ui.js"></script>
+    <script>
+        // Initialize game
+        let game;
+
+        function startGame() {
+            game = new ThreeDragonAnte();
+
+            game.onStateChange = async (state) => {
+                UI.render(state);
+
+                // Handle AI turns
+                if (state.phase !== 'gameover') {
+                    const currentPlayer = game.getCurrentPlayer();
+                    if (currentPlayer.isAI) {
+                        await AI.processTurn(game);
+                    }
+                } else {
+                    UI.showNewGameButton();
+                }
+            };
+
+            UI.init();
+            UI.hideNewGameButton();
+            game.init('You');
+        }
+
+        // Handle player card clicks
+        function handleCardClick(cardIndex) {
+            const player = game.getHumanPlayer();
+
+            if (game.phase === 'ante') {
+                game.selectAnte(player, cardIndex);
+            } else if (game.phase === 'play') {
+                if (game.getCurrentPlayer() === player) {
+                    game.playCard(player, cardIndex);
+                }
+            }
+        }
+
+        // New game button
+        document.addEventListener('DOMContentLoaded', () => {
+            startGame();
+
+            document.getElementById('new-game-btn').addEventListener('click', () => {
+                startGame();
+            });
+        });
+    </script>
+</body>
+
+</html>

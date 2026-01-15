@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museum of Natural History - Golden Vault Journal</title>
+    <meta name="description" content="The Varkenbluff Museum of Natural History - site of the first heist">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .location-meta {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .location-meta table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .location-meta td {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .location-meta tr:last-child td {
+            border-bottom: none;
+        }
+
+        .location-meta td:first-child {
+            color: var(--accent-gold);
+            font-weight: 600;
+            width: 40%;
+        }
+
+        .location-meta a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .location-meta a:hover {
+            text-decoration: underline;
+        }
+
+        .npc-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .npc-table th,
+        .npc-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .npc-table th {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .session-notes {
+            background: var(--bg-accent);
+            border-left: 4px solid var(--accent-gold);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .session-notes h3 {
+            margin-top: 0;
+            border: none;
+        }
+
+        .session-notes ul {
+            margin-bottom: 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <a href="../index.html" class="back-link">← Back to Atlas</a>
+
+        <h1>🏛️ Varkenbluff Museum of Natural History</h1>
+        <p style="text-align: center; color: var(--text-secondary); font-style: italic;">
+            The city's premier showcase of archaeology, natural wonders, and stolen eldritch horrors
+        </p>
+
+        <img src="../../assets/locations/museum_reference.png" alt="Museum of Natural History"
+            style="margin: 1.5rem auto; display: block;">
+
+        <hr>
+
+        <h2>Overview</h2>
+        <p>The Varkenbluff Museum of Natural History stands as the crown jewel of the city's academic district. Its
+            marble facade and enormous columns speak to the wealth and prestige of the institution. The museum houses
+            artifacts from across the region, including items from the Murkmire dig site and displays curated in close
+            partnership with Varkenbluff University.</p>
+        <p>The museum's <strong>Gemstone Wing</strong> was the site of the infamous gala where the Murkmire Stone was
+            nearly hatched—and subsequently stolen by the heist team.</p>
+
+        <h2>Location</h2>
+        <div class="location-meta">
+            <table>
+                <tr>
+                    <td>Parent Settlement</td>
+                    <td><a href="../settlements/varkenbluff.html">Varkenbluff</a></td>
+                </tr>
+                <tr>
+                    <td>District</td>
+                    <td>Academic District</td>
+                </tr>
+                <tr>
+                    <td>Proximity</td>
+                    <td>Adjacent to the Sage's Quill Tavern; less than a mile from Varkenbluff University</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>Physical Details</h2>
+
+        <h3>Exterior</h3>
+        <blockquote>
+            The facade of the Varkenbluff Museum of Natural History boasts enormous columns and elegant archways hewn
+            from marble. Cosmopolitan visitors bustle about the entrance.
+        </blockquote>
+
+        <h3>Interior</h3>
+        <ul>
+            <li><strong>Stone walls and tiled floors</strong> throughout</li>
+            <li><strong>15-foot ceilings</strong> with decorative moldings</li>
+            <li><strong>Glass display cases</strong> for smaller artifacts</li>
+            <li><strong>Open exhibit halls</strong> for larger pieces (dinosaur skeletons, cultural recreations)</li>
+        </ul>
+
+        <h3>Key Areas</h3>
+        <div class="location-meta">
+            <table>
+                <tr>
+                    <td>Gemstone Wing</td>
+                    <td>Second floor; site of gala events and precious artifact displays</td>
+                </tr>
+                <tr>
+                    <td>Natural History Hall</td>
+                    <td>Animated dinosaur skeleton exhibit</td>
+                </tr>
+                <tr>
+                    <td>Curio Corner</td>
+                    <td>Ancient Varkenbluff artifacts (clay pots, stone tools)</td>
+                </tr>
+                <tr>
+                    <td>Basement</td>
+                    <td>Staff-only storage and security office</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>Key NPCs</h2>
+        <table class="npc-table">
+            <tr>
+                <th>NPC</th>
+                <th>Role</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td><strong>Alda Arkin</strong></td>
+                <td>Museum Curator (elf, neutral evil)</td>
+                <td>Retired professor; close ties to university; potentially corrupt</td>
+            </tr>
+            <tr>
+                <td><strong>Captain Maryam Bikram</strong></td>
+                <td>City Watch</td>
+                <td>Stationed at gala entrance</td>
+            </tr>
+        </table>
+
+        <div class="session-notes">
+            <h3>⚔️ Session History</h3>
+            <ul>
+                <li>✓ Heist team infiltrated during opening gala</li>
+                <li>✓ Murkmire Stone stolen</li>
+                <li>✓ Animated dinosaur skeleton chaos</li>
+            </ul>
+        </div>
+
+        <hr>
+        <footer>
+            <p>Keys From The Golden Vault • Campaign Journal</p>
+        </footer>
+    </main>
+</body>
+
+</html>
