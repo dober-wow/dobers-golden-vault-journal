@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps - The Murkmire Malevolence</title>
+    <meta name="description" content="Downloadable maps for The Murkmire Malevolence adventure">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .map-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .map-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .map-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(201, 169, 89, 0.2);
+        }
+
+        .map-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: none;
+            border-radius: 0;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .map-card-content {
+            padding: 1rem;
+        }
+
+        .map-card h3 {
+            margin: 0 0 0.5rem 0;
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        .map-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin: 0 0 1rem 0;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: var(--bg-accent);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+        }
+
+        .back-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .placeholder-card {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+            border: 2px dashed var(--border-color);
+        }
+
+        .placeholder-card .placeholder-icon {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+
+        .dm-tip {
+            background: var(--bg-accent);
+            border-left: 4px solid var(--accent-gold);
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .dm-tip strong {
+            color: var(--accent-gold);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 2px solid var(--accent-gold);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <p><a href="index.html" class="back-link">← Back to Module</a></p>
+
+        <h1>🗺️ Maps & Downloads</h1>
+        <p style="text-align: center; color: var(--text-secondary); font-style: italic;">The Murkmire Malevolence -
+            Visual Resources</p>
+
+        <div class="dm-tip">
+            <strong>💡 DM Tip:</strong> Click any map to view full-size. Use the download buttons to save maps for your
+            VTT or print.
+        </div>
+
+        <h2>Location Reference Images</h2>
+        <div class="map-gallery">
+            <article class="map-card">
+                <img src="../../assets/modules/murkmire/museum_reference.png" alt="Museum of Natural History"
+                    onclick="openLightbox(this.src)">
+                <div class="map-card-content">
+                    <h3>Museum Exterior</h3>
+                    <p>The Varkenbluff Museum of Natural History - marble columns, glass domes, dinosaur statues.</p>
+                    <a href="../../assets/modules/murkmire/museum_reference.png" download="museum_exterior.png"
+                        class="download-btn">⬇ Download</a>
+                </div>
+            </article>
+
+            <article class="map-card">
+                <img src="../../assets/modules/murkmire/sages_quill_tactical_map.png" alt="Sage's Quill Tavern"
+                    onclick="openLightbox(this.src)">
+                <div class="map-card-content">
+                    <h3>Sage's Quill Tavern</h3>
+                    <p>Tactical map of the tavern where Dr. Dannell briefs the party.</p>
+                    <a href="../../assets/modules/murkmire/sages_quill_tactical_map.png"
+                        download="sages_quill_tactical.png" class="download-btn">⬇ Download</a>
+                </div>
+            </article>
+
+            <article class="map-card">
+                <img src="../../assets/modules/murkmire/dr_cassee_dannell.png" alt="Dr. Cassee Dannell"
+                    onclick="openLightbox(this.src)">
+                <div class="map-card-content">
+                    <h3>Dr. Cassee Dannell</h3>
+                    <p>NPC portrait - the quest giver and disgraced anthropologist.</p>
+                    <a href="../../assets/modules/murkmire/dr_cassee_dannell.png" download="dr_cassee_dannell.png"
+                        class="download-btn">⬇ Download</a>
+                </div>
+            </article>
+        </div>
+
+        <h2>Floor Plans</h2>
+        <div class="map-gallery">
+            <article class="map-card">
+                <img src="../../assets/modules/murkmire/handdrawn_map_of_museum.jpg" alt="Dr. Dannell's Sketch"
+                    onclick="openLightbox(this.src)">
+                <div class="map-card-content">
+                    <h3>Map 1.1 - Dr. Dannell's Sketch</h3>
+                    <p>The incomplete museum map provided by Dr. Dannell to help plan the heist.</p>
+                    <a href="../../assets/modules/murkmire/handdrawn_map_of_museum.jpg"
+                        download="dannell_sketch_map.jpg" class="download-btn">⬇ Download</a>
+                </div>
+            </article>
+
+            <article class="map-card">
+                <img src="../../assets/modules/murkmire/player_museum_map.jpg" alt="Player Museum Map"
+                    onclick="openLightbox(this.src)">
+                <div class="map-card-content">
+                    <h3>Player Map</h3>
+                    <p>Spoiler-free map for players - no secret doors or security marked.</p>
+                    <a href="../../assets/modules/murkmire/player_museum_map.jpg" download="museum_player_map.jpg"
+                        class="download-btn">⬇ Download</a>
+                </div>
+            </article>
+
+            <article class="map-card">
+                <img src="../../assets/modules/murkmire/dm_museum_map.jpg" alt="DM Museum Map"
+                    onclick="openLightbox(this.src)">
+                <div class="map-card-content">
+                    <h3>DM Map</h3>
+                    <p>Complete map with all rooms, secret doors (S), alarms (A), and guard positions marked.</p>
+                    <a href="../../assets/modules/murkmire/dm_museum_map.jpg" download="museum_dm_map.jpg"
+                        class="download-btn">⬇ Download</a>
+                </div>
+            </article>
+        </div>
+
+        <div class="dm-tip">
+            <strong>🗺️ Map Usage:</strong> Share the Player Map with your group for planning. Use the DM Map during
+            play to track guard movements and traps.
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Keys From The Golden Vault • The Murkmire Malevolence</p>
+        </footer>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Full-size map">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+
+</html>

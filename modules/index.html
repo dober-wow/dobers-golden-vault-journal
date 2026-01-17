@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DM Toolkit - Dober's Golden Vault Journal</title>
+    <meta name="description" content="Adventure modules for DMs running Keys From The Golden Vault">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .dm-warning {
+            background: linear-gradient(135deg, #3d2828 0%, #2d2020 100%);
+            border: 2px solid var(--accent-red);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .dm-warning h3 {
+            color: var(--accent-red);
+            margin: 0 0 0.5rem 0;
+            border: none;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .module-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .module-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(201, 169, 89, 0.25);
+        }
+
+        .module-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border: none;
+            border-radius: 0;
+            margin: 0;
+        }
+
+        .module-card-content {
+            padding: 1.25rem;
+        }
+
+        .module-card h3 {
+            margin: 0 0 0.5rem 0;
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        .module-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0 0 1rem 0;
+        }
+
+        .module-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .level-badge {
+            display: inline-block;
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .back-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <p><a href="../index.html" class="back-link">← Back to Journal</a></p>
+
+        <h1>📜 DM Toolkit</h1>
+        <p style="text-align: center; color: var(--text-secondary); font-style: italic;">Adventure modules for running
+            Keys From The Golden Vault</p>
+
+        <div class="dm-warning">
+            <h3>⚠️ For DMs Only</h3>
+            <p>This section contains spoilers for adventure modules. Players should stay out!</p>
+        </div>
+
+        <h2>Available Modules</h2>
+        <div class="module-grid">
+            <article class="module-card">
+                <a href="murkmire-malevolence/index.html">
+                    <img src="../assets/modules/murkmire/museum_reference.png" alt="Museum of Natural History">
+                    <div class="module-card-content">
+                        <h3>The Murkmire Malevolence</h3>
+                        <p>Steal an eldritch egg from the Varkenbluff Museum before it hatches at midnight.</p>
+                        <span class="level-badge">Level 1 (Scaled to 3)</span>
+                    </div>
+                </a>
+            </article>
+            <!-- Future modules will be added here -->
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Keys From The Golden Vault • DM Toolkit</p>
+        </footer>
+    </main>
+</body>
+
+</html>

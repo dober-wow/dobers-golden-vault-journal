@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Murkmire Malevolence - DM Toolkit</title>
+    <meta name="description" content="Adventure module: Steal an eldritch egg from the Varkenbluff Museum">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .module-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .module-nav {
+            position: sticky;
+            top: 1rem;
+            align-self: start;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem;
+            max-height: calc(100vh - 2rem);
+            overflow-y: auto;
+        }
+
+        .module-nav h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1rem;
+            border: none;
+            color: var(--accent-gold);
+        }
+
+        .module-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .module-nav li {
+            margin: 0.4rem 0;
+        }
+
+        .nav-sub {
+            list-style: none;
+            padding-left: 1rem;
+            margin: 0.2rem 0 0 0;
+        }
+
+        .nav-sub li {
+            margin: 0.15rem 0;
+        }
+
+        .nav-sub a {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.8;
+        }
+
+        .module-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: block;
+            padding: 0.3rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .module-nav a:hover {
+            color: var(--accent-gold);
+            background: var(--bg-accent);
+        }
+
+        .module-content {
+            min-width: 0;
+        }
+
+        .module-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-section h2 {
+            margin-top: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .module-section h2::after {
+            content: '▼';
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .module-section.collapsed h2::after {
+            transform: rotate(-90deg);
+        }
+
+        .module-section.collapsed .section-content {
+            display: none;
+        }
+
+        .dm-warning {
+            background: linear-gradient(135deg, #3d2828 0%, #2d2020 100%);
+            border: 2px solid var(--accent-red);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .dm-warning strong {
+            color: var(--accent-red);
+        }
+
+        .npc-portrait {
+            float: right;
+            width: 150px;
+            margin: 0 0 1rem 1rem;
+            border-radius: 8px;
+        }
+
+        .stat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .stat-table th,
+        .stat-table td {
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .stat-table th {
+            background: var(--bg-accent);
+            color: var(--accent-gold);
+            font-family: 'Cinzel', serif;
+        }
+
+        .map-link {
+            display: inline-block;
+            background: var(--bg-accent);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            margin: 1rem 0.5rem 1rem 0;
+            transition: all 0.2s ease;
+        }
+
+        .map-link:hover {
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+        }
+
+        .back-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .read-aloud {
+            background: var(--bg-accent);
+            border-left: 4px solid var(--accent-gold);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        @media (max-width: 800px) {
+            .module-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .module-nav {
+                position: relative;
+                top: 0;
+            }
+
+            .npc-portrait {
+                float: none;
+                display: block;
+                margin: 1rem auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <p><a href="../index.html" class="back-link">← Back to DM Toolkit</a></p>
+
+        <h1>🥚 The Murkmire Malevolence</h1>
+        <p style="text-align: center; color: var(--text-secondary); font-style: italic;">An Adventure for 1st-Level
+            Characters (Scalable to Level 3)</p>
+
+        <div class="module-layout">
+            <nav class="module-nav">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#background">Adventure Background</a></li>
+                    <li><a href="#golden-vault">Using the Golden Vault</a></li>
+                    <li><a href="#cry-for-help">A Cry for Help</a></li>
+                    <li><a href="#gala">The Opening Gala</a></li>
+                    <li><a href="#security">Security Measures</a></li>
+                    <li><a href="#museum">Museum Features</a></li>
+                    <li><a href="#locations">Museum Locations</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                    <li><a href="#further">Further Adventures</a></li>
+                    <li><a href="#murkmire-stone">The Murkmire Stone</a></li>
+                    <li><a href="#scaling">⚔️ Level 3 Scaling</a></li>
+                </ul>
+                <hr style="margin: 1rem 0;">
+                <a href="varkenbluff.html" class="map-link"
+                    style="display: block; text-align: center; margin-bottom: 0.5rem;">🏛️ Varkenbluff</a>
+                <a href="maps.html" class="map-link" style="display: block; text-align: center;">🗺️ Maps &
+                    Downloads</a>
+            </nav>
+
+            <div class="module-content">
+                <section id="overview" class="module-section">
+                    <h2>Overview</h2>
+                    <div class="section-content">
+                        <img src="../../assets/modules/murkmire/museum_reference.png"
+                            alt="Varkenbluff Museum of Natural History" style="width: 100%; margin-bottom: 1rem;">
+                        <p>Unbeknownst to anyone but a disgraced academic, the <strong>Varkenbluff Museum of Natural
+                                History</strong> is in grave danger. Archaeologists at a nearby dig site recently
+                            unearthed a curiosity: the <strong>Murkmire Stone</strong>.</p>
+                        <p>This object is actually an eldritch creature's egg, and it's about to hatch. The characters
+                            must infiltrate the museum, steal the egg, and return it to <strong>Dr. Cassee
+                                Dannell</strong> to be neutralized before it releases an eldritch horror.</p>
+                        <div class="dm-warning">
+                            <strong>⏰ Time Pressure:</strong> The egg hatches at midnight. The gala begins at 6 PM,
+                            museum closes at 8 PM. Players have ~6 hours in-world.
+                        </div>
+                    </div>
+                </section>
+
+                <section id="background" class="module-section">
+                    <h2>Adventure Background</h2>
+                    <div class="section-content">
+                        <img src="../../assets/modules/murkmire/dr_cassee_dannell.png" alt="Dr. Cassee Dannell"
+                            class="npc-portrait">
+                        <p><strong>Dr. Cassee Dannell</strong>, a brilliant academic, discovered through her occult
+                            research that the recently unearthed Murkmire Stone is actually an eldritch creature's egg.
+                        </p>
+                        <p>Key points:</p>
+                        <ul>
+                            <li>The stone was found in the Murkmire by Varkenbluff University archaeologists</li>
+                            <li>Dr. Dannell recognized it from her secret occult studies</li>
+                            <li>The university dismissed her warnings as "pseudoscience"</li>
+                            <li>She was caught trying to steal it and was fired</li>
+                            <li>The egg hatches at <strong>midnight tonight</strong></li>
+                        </ul>
+                        <p>According to her research, these eggs lay dormant for generations until unearthed, then
+                            rapidly develop. The resulting creatures are ravenous for raw meat and grow exponentially.
+                            The only way to neutralize the egg is to encase it in specially prepared crystal.</p>
+                    </div>
+                </section>
+
+                <section id="golden-vault" class="module-section">
+                    <h2>Using the Golden Vault</h2>
+                    <div class="section-content">
+                        <p>If using the Golden Vault as a patron, deliver a golden key to the characters. When they open
+                            their music box:</p>
+                        <div class="read-aloud">
+                            "Greetings, operatives. The Golden Vault has learned that the egg of an eldritch horror has
+                            been mistaken for a historical object and is about to go on display at the Varkenbluff
+                            Museum of Natural History. The anthropologist Dr. Cassee Dannell tried to warn officials
+                            about this egg, known as the Murkmire Stone, but none believed her. We do, and we know that
+                            if this egg hatches, many will die—or worse. This quest, should you choose to undertake it,
+                            requires you to infiltrate the museum, steal the egg, and return it to Dr. Dannell, who will
+                            neutralize it. There's no time to waste; the egg could hatch at any moment. Start by meeting
+                            with Dr. Dannell. Good luck, operatives."
+                        </div>
+                    </div>
+                </section>
+
+                <section id="cry-for-help" class="module-section">
+                    <h2>A Cry for Help</h2>
+                    <div class="section-content">
+                        <h3>Character Connections</h3>
+                        <p>Establish why Dr. Dannell reaches out to the party:</p>
+                        <ul>
+                            <li><strong>Dannell Family Friend:</strong> Connected through academic circles</li>
+                            <li><strong>Museum Enthusiast:</strong> Correspondence with fans of her work</li>
+                            <li><strong>University Student:</strong> Attended her classes, impressed by occult acumen
+                            </li>
+                        </ul>
+                        <h3>Starting Scene</h3>
+                        <div class="read-aloud">
+                            No matter your business this morning, a grave halfling messenger finds you and hands you a
+                            sealed parchment.<br><br>
+                            "Meet me at the Sage's Quill today as soon as you can," the missive reads. "I beg your help
+                            in a delicate matter whose importance cannot be overstated. I shall await you in a purple
+                            hooded robe."<br><br>
+                            The note is signed, "Dr. Cassee Dannell."
+                        </div>
+                        <h3>The Meeting</h3>
+                        <img src="../../assets/modules/murkmire/sages_quill_tactical_map.png" alt="Sage's Quill Tavern"
+                            style="width: 100%; margin: 1rem 0;">
+                        <p>The <strong>Sage's Quill</strong> is a quiet, plush tavern adjacent to the museum. Dr.
+                            Dannell (<em>NG human commoner, INT 18</em>) provides:</p>
+                        <ul>
+                            <li><strong>Gala tickets</strong> for each character</li>
+                            <li><strong>Formal attire</strong> from her heirloom <em>bag of holding</em></li>
+                            <li>Her <strong>sketch of the museum</strong> (incomplete)</li>
+                            <li>The <em>bag of holding</em> itself (to store gear)</li>
+                        </ul>
+                        <h3>Reward</h3>
+                        <p>For bringing the stone back: The <em>bag of holding</em> + 20 gp per character (30 gp with DC
+                            13 Persuasion).</p>
+                    </div>
+                </section>
+
+                <section id="gala" class="module-section">
+                    <h2>The Opening Gala</h2>
+                    <div class="section-content">
+                        <p>The private gala celebrating the Murkmire Stone exhibition begins at <strong>6 PM</strong>.
+                            Museum closes at <strong>8 PM</strong>.</p>
+                        <img src="../../assets/modules/murkmire/player_museum_map.jpg"
+                            alt="Museum Floor Plan (Player Version)" style="width: 100%; margin: 1rem 0;">
+                        <p style="text-align: center; font-size: 0.85rem; color: var(--text-secondary);"><em>Player-safe
+                                floor plan — share with your group for heist planning</em></p>
+                        <ul>
+                            <li>Weapons and visible armor are <strong>not permitted</strong></li>
+                            <li>Only the Gemstone Wing (second floor) is restricted to ticket-holders</li>
+                            <li>Characters have ~2 hours to scout before closing</li>
+                        </ul>
+                        <h3>Curator Alda Arkin</h3>
+                        <p><strong>Alda Arkin</strong> (<em>NE elf noble</em>) mingles at the gala. She carries a clutch
+                            containing:</p>
+                        <ul>
+                            <li>Map of guard patrol routes after hours</li>
+                            <li>Master key to all museum doors</li>
+                            <li>Pass card to bypass alarms</li>
+                        </ul>
+                        <p>She deeply dislikes Dr. Dannell and dismisses any concerns about the stone.</p>
+                        <h3>Gala Attendees (d4)</h3>
+                        <table class="stat-table">
+                            <tr>
+                                <th>d4</th>
+                                <th>Attendee</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><strong>Captain Frankheim Walters</strong> (CN human) - implies military service
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><strong>Georgina Lucina Vandylarahal</strong> (NE elf) - sneering mining heiress
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><strong>Countess Helene Danforth</strong> (NG human) - titled but poor</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><strong>Dr. Horthnar Stonecrusher</strong> (LG dwarf) - surgeon, gemstone lover</td>
+                            </tr>
+                        </table>
+                        <h3>Museum Gossip (d4)</h3>
+                        <p>DC 12 Persuasion while chatting reveals:</p>
+                        <table class="stat-table">
+                            <tr>
+                                <th>d4</th>
+                                <th>Tidbit</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>The curator has been fidgeting with her clutch all night</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>The museum hides displays in the basement at night</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>The basement has gems and ore worth a fortune</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>The curator keeps a human-sized vintage doll in her office</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="security" class="module-section">
+                    <h2>Security Measures</h2>
+                    <div class="section-content">
+                        <h3>Alarms</h3>
+                        <p>Audible <em>alarm</em> spells are placed on:</p>
+                        <ul>
+                            <li>Front doors to V1 (10-ft area)</li>
+                            <li>Bottom of stairs in V1</li>
+                            <li>Hallways from V1 to V3</li>
+                            <li>Doors from V1 to offices (V5, V6, V7)</li>
+                            <li>Hall from V11 to V12</li>
+                            <li>Door from V12 to V13</li>
+                        </ul>
+                        <p><strong>Bypassing:</strong> Pass cards (found in V7 or stolen) allow bypass. DC 14 Sleight of
+                            Hand to pickpocket.</p>
+                        <h3>Animated Statues</h3>
+                        <p>Statues in V1 and V12 animate (use <strong>animated armor</strong> stat block) if anyone
+                            comes within 5 feet after hours.</p>
+                        <h3>Gemstone Wing Trap</h3>
+                        <p>Removing the stone from its pedestal triggers <em>arcane lock</em> on all doors (DC 20 to
+                            pick/force). Can be circumvented by swapping with a fake stone from V9 (DC 10 Sleight of
+                            Hand).</p>
+                        <h3>Guards (12 Total)</h3>
+                        <table class="stat-table">
+                            <tr>
+                                <th>Area</th>
+                                <th>Guards</th>
+                                <th>Area</th>
+                                <th>Guards</th>
+                            </tr>
+                            <tr>
+                                <td>V1</td>
+                                <td>2</td>
+                                <td>V9-V10</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>V3</td>
+                                <td>1</td>
+                                <td>V11</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>V4</td>
+                                <td>1</td>
+                                <td>V12</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>V8</td>
+                                <td>1</td>
+                                <td>V13</td>
+                                <td>2</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="museum" class="module-section">
+                    <h2>Museum Features</h2>
+                    <div class="section-content">
+                        <h3>General Features</h3>
+                        <ul>
+                            <li><strong>Ceilings:</strong> 30 feet high</li>
+                            <li><strong>Interior Doors:</strong> Locked, DC 12 to pick (triggers alarm if one is on
+                                door)</li>
+                            <li><strong>Lighting:</strong> Most areas well-lit with <em>continual flame</em>; V1, V12,
+                                V16, V17 are dim</li>
+                            <li><strong>Secret Doors:</strong> DC 12 Perception, hidden in V3, V4, V8, V9, V12, V13</li>
+                        </ul>
+                        <h3>Hiding Spots</h3>
+                        <ul>
+                            <li><strong>Cleaning supply hallways</strong> behind secret doors</li>
+                            <li><strong>Privies (V15):</strong> Guards barely check</li>
+                            <li><strong>Attic (V17) or Basement (V16):</strong> Not entered before closing</li>
+                        </ul>
+                        <h3>Re-Entry Options</h3>
+                        <ul>
+                            <li><strong>Front doors:</strong> Pick lock, bypass alarm, avoid net trap and statues</li>
+                            <li><strong>Skylight (V17):</strong> DC 14 to unlock, DC 12 Athletics to open</li>
+                            <li><strong>Basement doors (V16):</strong> DC 14 to unlock, DC 15 Athletics to force
+                                (noisy!)</li>
+                            <li><strong>Secret tunnel (V16):</strong> Exits in a copse near museum</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="locations" class="module-section">
+                    <h2>Museum Locations</h2>
+                    <div class="section-content">
+                        <img src="../../assets/modules/murkmire/dm_museum_map.jpg" alt="Museum Floor Plan (DM Version)"
+                            style="width: 100%; margin-bottom: 1rem;">
+                        <p style="text-align: center; font-size: 0.85rem; color: var(--text-secondary);"><em>DM map with
+                                secret doors (S), alarms (A), and guard positions marked</em></p>
+                        <p><em>The following locations are keyed to map 1.2. Descriptions assume characters are
+                                exploring after the museum closes.</em></p>
+
+                        <h3>V1: Grand Entrance</h3>
+                        <div class="read-aloud">
+                            Statues depicting robed human women flank the sides of this public mingling space, which
+                            boasts a marble column in the center. The museum's information desk is situated just inside
+                            the front doors. To the north is a grand staircase draped in rich carpet.
+                        </div>
+                        <p><strong>Guards:</strong> Two guards patrol this area.</p>
+                        <p><strong>Animated Statues:</strong> The two statues flanking the information desk animate if a
+                            character comes within 5 feet (use <strong>animated armor</strong> stat block).</p>
+                        <p><strong>Alarms:</strong> <em>Alarm</em> spells on the bottom of the grand staircase and on
+                            the front doors.</p>
+                        <p><strong>Front Doors:</strong> Locked from inside. DC 16 Dexterity check with thieves' tools
+                            to pick.</p>
+                        <p><strong>Net Trap (T on map):</strong> 5×10 ft pressure plate under rug. Toggle switch under
+                            info desk activates/deactivates. When triggered: weighted net drops, covering 10 ft square.
+                            Creatures are <em>restrained</em>; DC 10 STR save or also knocked <em>prone</em>. DC 10 STR
+                            check to escape. Net has AC 10, 12 HP.</p>
+
+                        <h3>V2: Museum Shops</h3>
+                        <div class="read-aloud">
+                            Display racks here are filled with tunics, bandannas, books, and bric-a-brac, most
+                            emblazoned with the museum's logo. Plush benches serve as seating areas.
+                        </div>
+                        <p>Eastern shop: "The Historian's Gifts" (souvenirs). Western shop: "The Archaeologist's Spade"
+                            (books, replicas).</p>
+                        <p><strong>Treasure:</strong> Each back room (DC 16 to unlock) contains 1d6 gp, 2d6 sp, 3d6 cp.
+                            One set of thieves' tools can be cobbled together from supplies.</p>
+
+                        <h3>V3: Ancient Plants Exhibit</h3>
+                        <div class="read-aloud">
+                            Artificial plants made of wood, silk, and other materials sprout from artfully arranged
+                            planters. Tall ferns, bushes with strange berries, and slender trees are represented
+                            alongside placards about ancient plant life.
+                        </div>
+                        <p><strong>Guards:</strong> One guard patrols. Hallways to north and south connect to V4.</p>
+                        <p><strong>Alarms:</strong> <em>Alarm</em> spells on short hallways connecting to V1.</p>
+                        <p><strong>Secret Doors:</strong> Northern and central exhibit rooms have secret doors opening
+                            into cleaning supply hallways that connect to V4.</p>
+
+                        <h3>V4: Ancient Cultures Exhibit</h3>
+                        <div class="read-aloud">
+                            Glass display cases boast objects related to life in ancient Varkenbluff. Clay pots, stone
+                            tools, and scraps of leather clothes are interspersed with informational placards about
+                            their historical use.
+                        </div>
+                        <p><strong>Guards:</strong> One guard patrols. Hallways to north and south connect to V3.</p>
+                        <p><strong>Secret Doors:</strong> Northern and central exhibit rooms have secret doors opening
+                            into cleaning supply hallways that connect to V3.</p>
+
+                        <h3>V5: Curator's Office</h3>
+                        <div class="read-aloud">
+                            A solid oak desk stands on a plush carpet in the center of this office. In the southeast
+                            corner, a strange, human-sized doll is posed in an elaborate silk dress.
+                        </div>
+                        <p><strong>Alarm:</strong> <em>Alarm</em> spell on door connecting to V1.</p>
+                        <p><strong>Deadly Doll:</strong> After hours, "Marigold" (5-foot-tall doll) animates when a
+                            creature other than Alda enters. Uses <strong>scarecrow</strong> stat block. Noisy fight may
+                            attract V1 guards.</p>
+                        <p><strong>Guards' Patrol Routes:</strong> Copy of after-hours patrol routes on desk (if not
+                            already stolen from Alda's clutch).</p>
+
+                        <h3>V6: Records Room</h3>
+                        <div class="read-aloud">
+                            Filing cabinets stand in this records room.
+                        </div>
+                        <p><strong>Alarm:</strong> <em>Alarm</em> spell on door connecting to V1.</p>
+                        <p><strong>Records:</strong> Contains past/current exhibit records, financial records, and
+                            information about <em>alarm</em> spell placements.</p>
+
+                        <h3>V7: Break Room and Storage</h3>
+                        <div class="read-aloud">
+                            Boxes of display supplies are stacked into this room's corners. Chairs surround a circular
+                            table in the middle.
+                        </div>
+                        <p><strong>Alarm:</strong> <em>Alarm</em> spell on door connecting to V1.</p>
+                        <p><strong>Pass Card Stash:</strong> Small box in SW corner contains three spare alarm pass
+                            cards. Note reads "spare alarm pass cards."</p>
+                        <p><strong>Treasure:</strong> <em>Potion of vitality</em> tucked between supply boxes in NW
+                            corner.</p>
+
+                        <h3>V8: Creatures of the Past Exhibit</h3>
+                        <div class="read-aloud">
+                            Fossils of small prehistoric creatures are arranged here, some as fully reconstructed
+                            skeletons. The exhibit includes microraptors, ornithopods, dwarf elephants, and an ancestor
+                            of the cockatrice. Informational placards tell the stories of these creatures and their
+                            bones' discovery.
+                        </div>
+                        <p><strong>Guards:</strong> One guard patrols.</p>
+                        <p><strong>Secret Door:</strong> Between exhibit rooms, opens into hallway heading north to V12.
+                        </p>
+
+                        <h3>V9: Underground Wonders Exhibit</h3>
+                        <div class="read-aloud">
+                            Glittering ore and gemstones are arranged in velvet-backed display cases. Informational
+                            placards explain local geologic history.
+                        </div>
+                        <p><strong>Guards:</strong> Two guards patrol V9 and V10, rotating every 5 minutes.</p>
+                        <p><strong>Gems:</strong> These gems hold little value; precious stones are in V13.</p>
+                        <p><strong>Fake Murkmire Stone:</strong> Easternmost room has a chunk of jade similar in
+                            size/weight to the Murkmire Stone. Display case locked (DC 10 thieves' tools). Smashing
+                            glass attracts guards.</p>
+                        <p><strong>Secret Door:</strong> Between V9 and V10, opens to hallway heading north to V13.</p>
+
+                        <h3>V10: Archaeology Display</h3>
+                        <div class="read-aloud">
+                            Picks, trowels, brushes, and other archaeological tools are on display here. Informational
+                            placards label them as tools famous local experts used to dig up the wonders found in the
+                            museum. Murals along the south wall depict famous digs.
+                        </div>
+                        <p><strong>Guards:</strong> Two guards patrol V9 and V10, rotating every 5 minutes.</p>
+                        <p><strong>Rogerson Dig:</strong> Placards tell the story of this dig (where most V12 creatures
+                            were found) and dismiss "curse" legends.</p>
+                        <p><strong>Treasure:</strong> DC 10 Perception reveals <strong>+1 dagger</strong> and <strong>+1
+                                handaxe</strong> behind glass with jammed lock. Breaking glass attracts guards.</p>
+
+                        <h3>V11: Unearthed Café</h3>
+                        <div class="read-aloud">
+                            This space holds a mix of cafeteria-style tables and lounge furniture. A counter in the
+                            northeast corner sits underneath a sign that reads, "Unearthed Café."
+                        </div>
+                        <p><strong>Guards:</strong> One guard patrols.</p>
+                        <p><strong>Treasure:</strong> Lockbox under counter (DC 14 thieves' tools) contains 15 gp, 7 sp,
+                            24 cp.</p>
+
+                        <h3>V12: Prehistoric Predators Exhibit</h3>
+                        <div class="read-aloud">
+                            The intact skeletons of several large prehistoric monsters are on display here, including
+                            the museum's most famous display: the beautifully preserved body of an allosaurus, its
+                            leathery skin appearing supple to the touch. An informational placard next to the dinosaur
+                            explains it died in the Murkmire millennia ago and was naturally preserved. Display cases
+                            along the room's walls hold fossils of other ancient local predators.
+                        </div>
+                        <p><strong>Guards:</strong> Two guards patrol.</p>
+                        <p><strong>Animated Statue:</strong> Winged satyr statue west of stairs animates within 5 ft
+                            (use <strong>animated armor</strong> stat block).</p>
+                        <p><strong>Alarms:</strong> <em>Alarm</em> spell in hallway to V11 and on door to V13.</p>
+                        <p><strong>Animatronic Allosaurus:</strong> Panel of buttons in base. DC 10 Arcana
+                            (tinker's/thieves' tools) to overload magic, causing 10-minute rampage through V1. Uses
+                            <strong>allosaurus</strong> stat block as Construct (immune to poison, psychic, charmed,
+                            frightened, paralyzed, poisoned).
+                        </p>
+                        <p><strong>Vent:</strong> 3×3 ft, 5 ft deep, 10 ft above floor (DC 10 Athletics to reach). Leads
+                            to V13.</p>
+
+                        <h3>V13: Gemstone Wing (THE TARGET)</h3>
+                        <div class="read-aloud">
+                            Chairs surround several tables cluttered with crystal and silver tableware. Against the east
+                            wall, a light-green stone rests atop a marble pedestal.
+                        </div>
+                        <p><strong>Guards:</strong> Two guards patrol.</p>
+                        <p><strong>Setup:</strong> Staff will restore normal exhibits in the morning. Gemstone contents
+                            currently in basement (V16).</p>
+                        <div class="dm-warning">
+                            <strong>💎 The Murkmire Stone:</strong> At 10:30 PM it becomes translucent and begins
+                            emitting psychic pulses every 10 minutes. At midnight it hatches. See "The Murkmire Stone"
+                            section.
+                        </div>
+                        <p><strong>Rigged Pedestal:</strong> <em>Detect magic</em> reveals transmutation aura. DC 12
+                            Arcana to identify trap: removing stone triggers <em>arcane lock</em> on all doors (DC 20 to
+                            pick/force). Curator and guards unaffected.</p>
+                        <p><strong>Swapping Stone:</strong> Replace with fake from V9. DC 10 Sleight of Hand to swap
+                            without triggering locks.</p>
+                        <p><strong>Vent:</strong> 3×3 ft, 5 ft deep, 10 ft above floor (DC 10 Athletics to reach). Leads
+                            to V12.</p>
+                        <p><strong>Secret Door:</strong> South wall opens to hallway connecting to V9-V10 corridor.</p>
+
+                        <h3>V14-V15: Access Hallway & Privies</h3>
+                        <p>V14 connects V11 to V12 and V15. V15 has five stalls with simple latches. Staircase east of
+                            privies leads to V17 (attic).</p>
+
+                        <h3>V16: Basement</h3>
+                        <div class="read-aloud">
+                            Boxes and crates are piled here in groups. Enormous warehouse doors take up much of the
+                            basement's northern wall.
+                        </div>
+                        <p><strong>Mimic:</strong> Lurks in centermost pile of boxes. Waits until creature within 5 ft,
+                            then attacks.</p>
+                        <p><strong>Loading Docks:</strong> DC 14 thieves' tools to unlock doors, then DC 15 Athletics to
+                            shove open. <em>Noisy—attracts V1 guard.</em></p>
+                        <p><strong>Secret Door:</strong> NW corner opens to 50-ft tunnel exiting in copse of trees near
+                            museum.</p>
+                        <p><strong>Treasure:</strong> SE corner boxes contain Gemstone Wing items: 20 lbs of gems and
+                            raw silver ore worth 150 gp total.</p>
+
+                        <h3>V17: Attic</h3>
+                        <div class="read-aloud">
+                            A winding staircase leads up to this cramped space filled with haphazardly stacked boxes.
+                            Starlight pours into the space through a large skylight.
+                        </div>
+                        <p>Stores event supplies (lecterns, linens, tableware).</p>
+                        <p><strong>Skylight:</strong> DC 14 thieves' tools to unlock, DC 12 Athletics to lift open.
+                            Loose bricks on roof can prop it open.</p>
+                    </div>
+                </section>
+
+                <section id="conclusion" class="module-section">
+                    <h2>Conclusion</h2>
+                    <div class="section-content">
+                        <h3>Mission Success</h3>
+                        <p>Dr. Dannell locks the stone in her crystal box, neutralizing it. She tries to regain her
+                            position at the university.</p>
+                        <p><strong>Rewards:</strong></p>
+                        <ul>
+                            <li><em>Bag of holding</em> + 20-30 gp per character</li>
+                            <li>If using Golden Vault: uncommon magic item of their choice</li>
+                        </ul>
+                        <h3>Mission Failure</h3>
+                        <p>If they don't deliver by midnight:</p>
+                        <ul>
+                            <li>The egg hatches into an 8-foot-long nascent eldritch horror</li>
+                            <li>Use <strong>ankheg</strong> stat block (poison bite instead of acid)</li>
+                            <li>It terrorizes the museum, eating guards</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="further" class="module-section collapsed">
+                    <h2>Further Adventures</h2>
+                    <div class="section-content">
+                        <h3>If Successful</h3>
+                        <ul>
+                            <li><strong>Another Stone:</strong> Second egg found at another dig site, closer to hatching
+                            </li>
+                            <li><strong>Zoo Hatchling:</strong> Strange creature at Varkenbluff Zoo hatched from similar
+                                egg</li>
+                            <li><strong>Reinstate Dr. Dannell:</strong> Curator Alda Arkin is secretly a crime lord
+                                fencing stolen artifacts</li>
+                        </ul>
+                        <h3>If Unsuccessful</h3>
+                        <ul>
+                            <li><strong>Stolen Stone:</strong> Alda steals it for her syndicate, transforms into a
+                                Monstrosity</li>
+                            <li><strong>Feeding Frenzy:</strong> Hatchling grows to pony-size in days, then breaks out.
+                                Uses <strong>behir</strong> stat block when fully grown.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="murkmire-stone" class="module-section collapsed">
+                    <h2>The Murkmire Stone</h2>
+                    <div class="section-content">
+                        <p>Recently unearthed from the Murkmire outside Varkenbluff, the <strong>Murkmire Stone</strong>
+                            is actually the egg of an eldritch creature. The opaque, light-green stone weighs 10 pounds
+                            and has abstract furrows on its surface. It is a <em>nonmagical object</em> (it's an egg,
+                            not an artifact).</p>
+
+                        <h3>Activation Timeline</h3>
+                        <p>The egg's removal from the Murkmire rapidly accelerated the development of the creature
+                            inside.</p>
+                        <ul>
+                            <li><strong>10:30 PM:</strong> Stony shell becomes translucent, revealing the horror inside.
+                                Psychic pulses begin.</li>
+                            <li><strong>Every 10 minutes:</strong> Emits a pulse of magical energy.</li>
+                            <li><strong>Midnight:</strong> The egg hatches.</li>
+                        </ul>
+
+                        <h3>Pulse Mechanics</h3>
+                        <p>Whenever a pulse occurs, each creature within <strong>20 feet</strong> must make a <strong>DC
+                                10 Wisdom saving throw</strong>. A creature <em>holding</em> the egg has
+                            <strong>disadvantage</strong> on the roll.
+                        </p>
+                        <div class="dm-warning">
+                            <strong>📦 Bag of Holding:</strong> If the egg is placed in a <em>bag of holding</em> or
+                            other portable extradimensional space, the effect radiates from the container instead.
+                        </div>
+                        <p>When a creature fails the save, roll on the table below. When a creature rolls for a new
+                            effect, the previous one ends. All effects end when the egg hatches or is encased in Dr.
+                            Dannell's crystal box.</p>
+
+                        <h3>Murkmire Stone Effects</h3>
+                        <table class="stat-table">
+                            <tr>
+                                <th style="width: 50px;">d12</th>
+                                <th>Effect</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><strong>Whispers:</strong> Harsh whispers in an unknown language assault your
+                                    consciousness. You gain <em>vulnerability to psychic damage</em> and can't maintain
+                                    concentration on spells.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><strong>Adrenaline Surge:</strong> Adrenaline courses through your veins. You have
+                                    <em>advantage on Strength checks and Strength saving throws</em>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><strong>Leaden Limbs:</strong> Your limbs feel leaden, and your body responds
+                                    sluggishly. You have <em>disadvantage on Dexterity checks and Dexterity saving
+                                        throws</em>.</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><strong>Weird Sheen:</strong> Your skin takes on a weird sheen. You gain
+                                    <em>resistance to piercing and slashing damage</em>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><strong>Speed Boost:</strong> Your walking speed increases by <em>5 feet</em>.</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td><strong>Scattered Focus:</strong> Your mind is pulled in a thousand directions,
+                                    making it difficult to focus. You have <em>disadvantage on attack rolls</em>.</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td><strong>Skin Crawl:</strong> Ripples pulse underneath your skin like vermin are
+                                    skittering inside your flesh. You have <em>disadvantage on Charisma checks and
+                                        Charisma saving throws</em>.</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td><strong>Stiff Joints:</strong> Your joints stiffen. You have <em>disadvantage on
+                                        Dexterity checks and Dexterity saving throws</em>.</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td><strong>Premonitions:</strong> You receive premonitions of attacks made against you.
+                                    <em>Attack rolls against you have disadvantage</em>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td><strong>Nightmare Fog:</strong> Your thought processes are sluggish, as if you just
+                                    awoke from terrible nightmares. You have <em>disadvantage on Intelligence checks and
+                                        Intelligence saving throws</em>.</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td><strong>Dulled Senses:</strong> Your senses are dulled, as if an invisible barrier
+                                    sits between you and reality. You have <em>disadvantage on Wisdom (Perception)
+                                        checks</em>.</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td><strong>Shimmery Film:</strong> A shimmery film covers you. You gain a <em>+2 bonus
+                                        to AC</em>.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="scaling" class="module-section">
+                    <h2>⚔️ Level 3 Scaling (5 PCs)</h2>
+                    <div class="section-content">
+                        <p>Combat adjustments for running with <strong>5 player characters at level 3</strong> instead
+                            of 4 PCs at level 1.</p>
+                        <div class="dm-warning">
+                            <strong>💡 Tip:</strong> These adjustments prioritize challenge without high TPK risk. Most
+                            encounters can be avoided with stealth—direct combat should feel dangerous but survivable.
+                        </div>
+
+                        <h3>Quick Reference</h3>
+                        <table class="stat-table">
+                            <tr>
+                                <th>Encounter</th>
+                                <th>Original</th>
+                                <th>Level 3 Changes</th>
+                            </tr>
+                            <tr>
+                                <td>Animated Armor ×3</td>
+                                <td>CR 1 each</td>
+                                <td>+1 armor (4 total); Multiattack; HP 44</td>
+                            </tr>
+                            <tr>
+                                <td>Marigold (Scarecrow)</td>
+                                <td>CR 1</td>
+                                <td>HP 50; DC 13 frighten; +1 Flying Sword</td>
+                            </tr>
+                            <tr>
+                                <td>Mimic</td>
+                                <td>CR 2</td>
+                                <td>HP 70; +1d6 ambush acid</td>
+                            </tr>
+                            <tr>
+                                <td>Guards ×12</td>
+                                <td>CR 1/8</td>
+                                <td>Captain → Veteran; 2 guards → Thugs</td>
+                            </tr>
+                            <tr>
+                                <td>Allosaurus</td>
+                                <td>CR 2</td>
+                                <td>HP 65; Tail reaction</td>
+                            </tr>
+                            <tr>
+                                <td>Hatched Horror</td>
+                                <td>CR 2</td>
+                                <td>HP 55; Psychic Scream; buffed spray</td>
+                            </tr>
+                            <tr>
+                                <td>Murkmire Stone</td>
+                                <td>DC 10</td>
+                                <td>Save DC → 12</td>
+                            </tr>
+                        </table>
+
+                        <h3>Detailed Adjustments</h3>
+
+                        <h4>Animated Armor (V1 and V12)</h4>
+                        <ul>
+                            <li>Add 1 statue in V1 (4 total)</li>
+                            <li>HP: 33 → <strong>44</strong></li>
+                            <li>Add Multiattack (2 slams)</li>
+                        </ul>
+                        <p><em>Safety: Only activate within 5 ft—party can avoid with care.</em></p>
+
+                        <h4>Marigold the Doll (V5)</h4>
+                        <ul>
+                            <li>HP: 36 → <strong>50</strong></li>
+                            <li>Frighten DC: 11 → <strong>13</strong></li>
+                            <li>Add 1 minion: <strong>Flying Sword</strong> (AC 17, HP 17)</li>
+                        </ul>
+                        <p><em>Safety: This room is optional—patrol routes also in Alda's clutch.</em></p>
+
+                        <h4>Mimic (V16 Basement)</h4>
+                        <ul>
+                            <li>HP: 58 → <strong>70</strong></li>
+                            <li>Ambush: +1d6 acid on surprised creatures</li>
+                        </ul>
+                        <p><em>Safety: Basement is optional; secret tunnel doesn't require fighting.</em></p>
+
+                        <h4>Museum Guards</h4>
+                        <ul>
+                            <li><strong>Captain Maryam Bikram:</strong> Replace with <strong>Veteran</strong> (CR 3, AC
+                                17, HP 58)</li>
+                            <li><strong>V13 Guards:</strong> Replace 2 with <strong>Thugs</strong> (HP 32, Pack Tactics)
+                            </li>
+                        </ul>
+                        <p><em>Safety: Guards capture, not kill. Mission failure ≠ death.</em></p>
+
+                        <h4>Animatronic Allosaurus (V12)</h4>
+                        <ul>
+                            <li>HP: 51 → <strong>65</strong></li>
+                            <li>Add <strong>Tail Reaction:</strong> +6 to hit, 1d8+4 bludgeoning when creature moves
+                                within 5 ft</li>
+                        </ul>
+                        <p><em>Safety: Players trigger intentionally—they should be able to run.</em></p>
+
+                        <h4>Hatched Horror (If Egg Hatches)</h4>
+                        <ul>
+                            <li>HP: 39 → <strong>55</strong></li>
+                            <li><strong>Psychic Scream (Recharge 6):</strong> 15 ft, DC 12 WIS, 2d6 psychic, frightened
+                                1 turn</li>
+                            <li>Poison spray: range 30→45 ft, DC 12→13</li>
+                        </ul>
+                        <p><em>Safety: Frame as "escape the museum" chase, not stand-and-fight.</em></p>
+
+                        <h3>DM Tips to Avoid TPK</h3>
+                        <ol>
+                            <li><strong>Stealth is the answer.</strong> Remind players they're thieves, not soldiers.
+                            </li>
+                            <li><strong>Guards capture, not kill.</strong> Dropped PCs are stabilized and restrained.
+                            </li>
+                            <li><strong>Reinforcements arrive slowly.</strong> 1-2 rounds to flee before backup.</li>
+                            <li><strong>The Allosaurus is a distraction.</strong> Smart players use it to draw guards.
+                            </li>
+                            <li><strong>Hatched horror = chase scene.</strong> "Escape before it eats you."</li>
+                        </ol>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Keys From The Golden Vault • The Murkmire Malevolence</p>
+        </footer>
+    </main>
+
+    <script>
+        // Collapsible sections
+        document.querySelectorAll('.module-section h2').forEach(header => {
+            header.addEventListener('click', () => {
+                header.parentElement.classList.toggle('collapsed');
+            });
+        });
+    </script>
+</body>
+
+</html>
