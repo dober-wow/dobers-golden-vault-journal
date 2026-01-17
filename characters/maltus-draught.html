@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maltus Draught - Golden Vault Journal</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .character-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .character-header h1 {
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .portrait {
+            max-width: 400px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: top;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.02);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <a href="index.html" class="back-link">← Back to Team</a>
+
+        <div class="character-header">
+            <h1>Maltus Draught</h1>
+            <p class="subtitle">Tiefling Trickery Cleric • Reformed Enforcer</p>
+        </div>
+
+        <img src="../assets/characters/maltus_portrait.png" alt="Maltus Draught" class="portrait">
+
+        <h2>Description</h2>
+        <p>A lean tiefling with slate-grey skin and short, swept-back horns that have been filed flat at the
+            tips—a deliberate attempt to look "less infernal" that only makes him more unsettling. His eyes are pale
+            gold, almost milky, giving him a perpetual look of knowing more than he should. A thin scar runs from his
+            left temple to jaw—a souvenir from a "collection" gone wrong.</p>
+
+        <p>Mal dresses in the understated elegance of casino floor staff: a fitted charcoal waistcoat over a deep
+            burgundy shirt, sleeves rolled to the elbow revealing faded brand scars on his forearms—the mark of
+            Afterlife Casino "enforcers." He carries a worn deck of Three-Dragon Ante cards that serves as his holy
+            symbol, each card subtly defaced with symbols of the Trickster gods.</p>
+
+        <h3>Mannerisms</h3>
+        <p>Speaks in a measured, almost therapeutic cadence—the voice of someone who has talked desperate gamblers out
+            of (and into) terrible decisions. Shuffles his cards when thinking. Never sits with his back to a door. Has
+            a habit of naming exactly how much gold someone is carrying just by watching them move.</p>
+
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="../assets/characters/maltus_formal.png" alt="Maltus in formal attire">
+            <img src="../assets/characters/maltus_action.png" alt="Maltus using Invoke Duplicity">
+            <img src="../assets/characters/maltus_enforcer.png" alt="Maltus the Enforcer">
+        </div>
+
+        <hr>
+        <footer>
+            <p>Keys From The Golden Vault • Campaign Journal</p>
+        </footer>
+    </main>
+</body>
+
+</html>
