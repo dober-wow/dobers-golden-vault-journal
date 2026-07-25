@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prisoner 13 &mdash; Revel's End - DM Toolkit</title>
+    <meta name="description" content="Adventure module: infiltrate the arctic prison of Revel's End and extract Prisoner 13.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .module-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+            align-items: start;
+        }
+
+        .module-nav {
+            position: sticky;
+            top: 1rem;
+            align-self: start;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem;
+            max-height: calc(100vh - 2rem);
+            overflow-y: auto;
+        }
+
+        .module-nav h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1rem;
+            border: none;
+            color: var(--accent-gold);
+        }
+
+        .module-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .module-nav li {
+            margin: 0.4rem 0;
+        }
+
+        .module-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: block;
+            padding: 0.3rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .module-nav a:hover,
+        .module-nav a.active {
+            color: var(--accent-gold);
+            background: var(--bg-accent);
+        }
+
+        .module-content {
+            min-width: 0;
+        }
+
+        .module-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-section h2 {
+            margin-top: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .module-section h2::after {
+            content: '\25BC';
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+            color: var(--accent-gold);
+        }
+
+        .module-section.collapsed h2::after {
+            transform: rotate(-90deg);
+        }
+
+        .module-section.collapsed .section-content {
+            display: none;
+        }
+
+        .dm-warning {
+            background: linear-gradient(135deg, #3d2828 0%, #2d2020 100%);
+            border: 2px solid var(--accent-red);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .dm-warning strong {
+            color: var(--warn-text);
+        }
+
+        .npc-portrait {
+            float: right;
+            width: 170px;
+            margin: 0 0 1rem 1rem;
+            border-radius: 8px;
+        }
+
+        .stat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .stat-table th,
+        .stat-table td {
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .stat-table th {
+            background: var(--bg-accent);
+            color: var(--accent-gold);
+            font-family: 'Cinzel', serif;
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+        }
+
+        /* --- spreadsheet gold ledger --- */
+        .ledger-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--accent-gold);
+            border-radius: 8px;
+            margin: 1.25rem 0;
+        }
+
+        table.ledger {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 520px;
+            font-variant-numeric: tabular-nums;
+            font-size: 0.95rem;
+        }
+
+        .ledger th,
+        .ledger td {
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 0.85rem;
+        }
+
+        .ledger thead th {
+            background: var(--bg-accent);
+            color: var(--accent-gold);
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-align: left;
+        }
+
+        .ledger .rownum {
+            width: 2.4rem;
+            text-align: center;
+            color: var(--text-secondary);
+            background: var(--bg-accent);
+            font-size: 0.78rem;
+            font-family: 'Cinzel', serif;
+            user-select: none;
+        }
+
+        .ledger td.num,
+        .ledger th.num {
+            text-align: right;
+        }
+
+        .ledger td.out {
+            color: var(--warn-text);
+        }
+
+        .ledger tbody tr:nth-child(even) td {
+            background: color-mix(in srgb, var(--accent-gold) 7%, transparent);
+        }
+
+        .ledger tbody tr:hover td {
+            background: color-mix(in srgb, var(--accent-gold) 14%, transparent);
+        }
+
+        .ledger tfoot td {
+            font-weight: 700;
+            background: var(--bg-accent);
+            border-top: 3px double var(--accent-gold);
+        }
+
+        .ledger tfoot .total-label {
+            color: var(--accent-gold);
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.03em;
+        }
+
+        .read-aloud {
+            background: var(--bg-accent);
+            border-left: 4px solid var(--accent-gold);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        .map-link {
+            display: inline-block;
+            background: var(--bg-accent);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            margin: 1rem 0.5rem 1rem 0;
+            transition: all 0.2s ease;
+        }
+
+        .map-link:hover {
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+        }
+
+        .back-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .cap {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 0.4rem;
+        }
+
+        @media (max-width: 800px) {
+            .module-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .module-nav {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+
+            .npc-portrait {
+                float: none;
+                display: block;
+                margin: 1rem auto;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <p><a href="../index.html" class="back-link">&larr; Back to DM Toolkit</a></p>
+
+        <h1>Prisoner 13 &mdash; Revel's End</h1>
+        <p style="text-align: center; color: var(--text-secondary); font-style: italic;">An Infiltration for 5th-Level
+            Operatives &middot; Keys From The Golden Vault, Heist 4</p>
+
+        <div class="module-layout">
+            <nav class="module-nav" aria-label="Section navigation">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="#overview" class="active">Overview</a></li>
+                    <li><a href="#background">Adventure Background</a></li>
+                    <li><a href="#golden-vault">Using the Golden Vault</a></li>
+                    <li><a href="#the-mark">The Mark &mdash; Korda Glintstone</a></li>
+                    <li><a href="#security">Security &amp; Suspicion</a></li>
+                    <li><a href="#locations">Prison Locations</a></li>
+                    <li><a href="#ledger">Vault Ledger</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                    <li><a href="#scaling">Scaling Notes</a></li>
+                </ul>
+                <hr style="margin: 1rem 0;">
+                <a href="#" class="map-link" style="display: block; text-align: center; margin-bottom: 0.5rem;">Revel's
+                    End</a>
+                <a href="#" class="map-link" style="display: block; text-align: center;">Maps &amp; Downloads</a>
+            </nav>
+
+            <div class="module-content">
+                <section id="overview" class="module-section">
+                    <h2>Overview</h2>
+                    <div class="section-content">
+                        <img src="../../assets/modules/prisoner-13/revels_end_reference.png"
+                            alt="Revel's End, the arctic prison" style="width: 100%; margin-bottom: 1rem;">
+                        <p>Far to the frozen north, past the reach of any friendly banner, the arctic prison of
+                            <strong>Revel's End</strong> holds the Sword Coast's most dangerous secrets behind
+                            blade-cliff walls. One of those secrets is a name: <strong>Korda Glintstone</strong>, a
+                            Zhentarim spymaster the Golden Vault needs to reach before someone quieter does.</p>
+                        <p>The operatives must gain entry to the prison under cover, locate Prisoner 13, and extract what
+                            they came for &mdash; testimony, a cipher, or the prisoner themselves &mdash; before the
+                            warden's suspicion boils over into a full lockdown.</p>
+                        <div class="dm-warning">
+                            <strong>Suspicion Clock:</strong> Every misstep raises the prison's alert level. At maximum
+                            suspicion the warden orders a lockdown and the extraction window closes.
+                        </div>
+                    </div>
+                </section>
+
+                <section id="background" class="module-section">
+                    <h2>Adventure Background</h2>
+                    <div class="section-content">
+                        <img src="../../assets/modules/prisoner-13/korda_glintstone_portrait.png"
+                            alt="Korda Glintstone" class="npc-portrait">
+                        <p><strong>Korda Glintstone</strong> spent a career trading secrets between the Zhentarim and
+                            anyone who could pay. When a deal soured, they were buried in the deepest cell Revel's End
+                            could offer &mdash; officially forgotten, unofficially still worth a fortune to the right
+                            buyer.</p>
+                        <p>Key points:</p>
+                        <ul>
+                            <li>Korda is held under a false name in the maximum-security tier.</li>
+                            <li>The warden, <strong>Marthannis</strong>, runs the prison by suspicion and precedent.</li>
+                            <li>A rival faction is already moving to silence Korda for good.</li>
+                            <li>The prison's arctic isolation is its strongest wall &mdash; and the party's biggest
+                                problem on the way out.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="golden-vault" class="module-section">
+                    <h2>Using the Golden Vault</h2>
+                    <div class="section-content">
+                        <p>Deliver a golden key to the characters. When they open the music box:</p>
+                        <div class="read-aloud">
+                            "Greetings, operatives. In the arctic prison of Revel's End sits a prisoner known only as
+                            number thirteen &mdash; a name that, spoken to the wrong ears, would cost a great many lives.
+                            We need what they know before it is silenced forever. Gain entry, reach Prisoner 13, and
+                            secure their testimony. The cold is not your ally, and neither is the warden. Move carefully,
+                            and move quickly. Good luck, operatives."
+                        </div>
+                    </div>
+                </section>
+
+                <section id="the-mark" class="module-section">
+                    <h2>The Mark &mdash; Korda Glintstone</h2>
+                    <div class="section-content">
+                        <img src="../../assets/modules/prisoner-13/revels_end_prisoner_13.png"
+                            alt="Prisoner 13 in their cell" style="width: 100%; margin-bottom: 1rem;">
+                        <p>Korda is cautious, transactional, and always negotiating. They will not simply follow rescuers
+                            &mdash; they will price the rescue. Persuasion, leverage, or a shared enemy opens the door.
+                        </p>
+                        <table class="stat-table">
+                            <tbody>
+                                <tr>
+                                    <th>Trait</th>
+                                    <th>Detail</th>
+                                </tr>
+                                <tr>
+                                    <td>Disposition</td>
+                                    <td>Wary &rarr; cooperative if convinced of a better deal</td>
+                                </tr>
+                                <tr>
+                                    <td>Wants</td>
+                                    <td>Out alive, and to know who ordered the hit on them</td>
+                                </tr>
+                                <tr>
+                                    <td>Leverage</td>
+                                    <td>A cipher naming Zhentarim assets across the North</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="security" class="module-section">
+                    <h2>Security &amp; Suspicion</h2>
+                    <div class="section-content">
+                        <img src="../../assets/modules/prisoner-13/revels_end_interior.png"
+                            alt="Revel's End panopticon interior" style="width: 100%; margin-bottom: 1rem;">
+                        <h3>Suspicion Levels</h3>
+                        <p>The prison tracks the party's cover. Each level tightens patrols and shortens the window.</p>
+                        <div class="table-scroll">
+                            <table class="stat-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Level</th>
+                                        <th>State</th>
+                                        <th>Effect</th>
+                                    </tr>
+                                    <tr>
+                                        <td>0&ndash;1</td>
+                                        <td>Routine</td>
+                                        <td>Standard patrols; cover holds</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2&ndash;3</td>
+                                        <td>Watchful</td>
+                                        <td>Extra checks; DC +2 on Deception</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Alert</td>
+                                        <td>Cells swept; guards doubled</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Lockdown</td>
+                                        <td>Extraction window closes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="locations" class="module-section">
+                    <h2>Prison Locations</h2>
+                    <div class="section-content">
+                        <img src="../../assets/modules/prisoner-13/revels_end_dm_map.png"
+                            alt="Revel's End ground level (DM map)" style="width: 100%; margin-bottom: 0.4rem;">
+                        <p class="cap">DM map &mdash; ground level, with cell tiers and patrol routes keyed</p>
+
+                        <h3>R1: Intake &amp; Search</h3>
+                        <div class="read-aloud">
+                            A blast of frigid air greets you as the iron door grinds open. Guards in fur-lined mail wave
+                            you toward a cold stone counter where every possession is logged, weighed, and taken.
+                        </div>
+                        <p><strong>Cover Check:</strong> Contraband raises suspicion. A successful Sleight of Hand or a
+                            solid forged manifest keeps gear hidden.</p>
+
+                        <h3>R7: The Maximum Tier</h3>
+                        <div class="read-aloud">
+                            The corridor narrows. Here the doors have no windows, only a slot at boot height and a number
+                            stamped in iron. The thirteenth is no different from the rest &mdash; which is exactly the
+                            point.
+                        </div>
+                        <p><strong>Guards:</strong> Two wardens rotate every ten minutes. <strong>Cell 13</strong> opens
+                            only to the warden's key or a DC 18 Thieves' Tools check.</p>
+                    </div>
+                </section>
+
+                <section id="ledger" class="module-section">
+                    <h2>Vault Ledger</h2>
+                    <div class="section-content">
+                        <p>Running account of the operation &mdash; the Golden Vault advance, expenses paid in the field,
+                            and the take from Prisoner 13's cipher. Money out is shown in red.</p>
+                        <div class="ledger-wrap">
+                            <table class="ledger">
+                                <thead>
+                                    <tr>
+                                        <th class="rownum" scope="col" aria-label="Row"></th>
+                                        <th scope="col">Entry</th>
+                                        <th class="num" scope="col">In (gp)</th>
+                                        <th class="num" scope="col">Out (gp)</th>
+                                        <th class="num" scope="col">Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="rownum">1</td><td>Golden Vault advance</td><td class="num">500</td><td class="num">&mdash;</td><td class="num">500</td></tr>
+                                    <tr><td class="rownum">2</td><td>Forged prison manifest</td><td class="num">&mdash;</td><td class="num out">120</td><td class="num">380</td></tr>
+                                    <tr><td class="rownum">3</td><td>Bribe &mdash; intake sergeant</td><td class="num">&mdash;</td><td class="num out">75</td><td class="num">305</td></tr>
+                                    <tr><td class="rownum">4</td><td>Cold-weather gear (party)</td><td class="num">&mdash;</td><td class="num out">90</td><td class="num">215</td></tr>
+                                    <tr><td class="rownum">5</td><td>Korda's cipher &mdash; bounty</td><td class="num">1,200</td><td class="num">&mdash;</td><td class="num">1,415</td></tr>
+                                    <tr><td class="rownum">6</td><td>Operative split (&divide;3)</td><td class="num">&mdash;</td><td class="num out">1,200</td><td class="num">215</td></tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td class="rownum"></td>
+                                        <td class="total-label">Totals</td>
+                                        <td class="num">1,700</td>
+                                        <td class="num out">1,485</td>
+                                        <td class="num">215</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">Party fund
+                            carries 215 gp forward. The uncommon magic item is logged separately in the Conclusion
+                            rewards.</p>
+                    </div>
+                </section>
+
+                <section id="conclusion" class="module-section collapsed">
+                    <h2>Conclusion</h2>
+                    <div class="section-content">
+                        <h3>Extraction Success</h3>
+                        <p>Korda delivers the cipher and, if extracted alive, becomes a recurring Golden Vault contact.
+                        </p>
+                        <p><strong>Rewards:</strong></p>
+                        <ul>
+                            <li>Zhentarim cipher (plot key for later heists)</li>
+                            <li>Uncommon magic item of the party's choice</li>
+                        </ul>
+                        <h3>Extraction Failure</h3>
+                        <p>If suspicion hits lockdown, the party must escape into the arctic with the warden's full
+                            attention &mdash; frame it as a flight, not a firefight.</p>
+                    </div>
+                </section>
+
+                <section id="scaling" class="module-section">
+                    <h2>Scaling Notes (3 PCs, Level 5)</h2>
+                    <div class="section-content">
+                        <div class="dm-warning">
+                            <strong>Tip:</strong> With a smaller party, favor stealth and negotiation. Direct fights
+                            against a fully-alerted prison should read as "get out," not "win the room."
+                        </div>
+                        <div class="table-scroll">
+                            <table class="stat-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Encounter</th>
+                                        <th>Baseline</th>
+                                        <th>3-PC Changes</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Warden Patrol</td>
+                                        <td>2 guards</td>
+                                        <td>Solo veteran; capture, don't kill</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cell-Block Rush</td>
+                                        <td>4 guards</td>
+                                        <td>3 guards; reinforce over 2 rounds</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Arctic Flight</td>
+                                        <td>Chase</td>
+                                        <td>Weather hazard DC 12 CON per round</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Keys From The Golden Vault &bull; Prisoner 13 &mdash; Revel's End</p>
+        </footer>
+    </main>
+
+    <script>
+        // Collapsible sections
+        document.querySelectorAll('.module-section h2').forEach(header => {
+            header.addEventListener('click', () => header.parentElement.classList.toggle('collapsed'));
+        });
+
+        // Active nav highlight on scroll
+        const links = [...document.querySelectorAll('.module-nav a[href^="#"]')];
+        const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    links.forEach(l => l.classList.remove('active'));
+                    map.get(e.target.id)?.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        document.querySelectorAll('.module-section[id]').forEach(s => obs.observe(s));
+    </script>
+</body>
+
+</html>

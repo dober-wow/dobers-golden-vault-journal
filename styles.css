@@ -9,6 +9,7 @@
     --text-secondary: #b8a88a;
     --accent-gold: #c9a959;
     --accent-red: #8b3a3a;
+    --warn-text: #dd9488; /* readable red for text/labels on dark grounds */
     --border-color: #3d3428;
 }
 
