@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Player handout: cover-identity papers for the Jolly Pelican, from Keys From The Golden Vault - Prisoner 13 (Revel's End).">
+<title>Cover Papers — The Jolly Pelican</title>
+<style>
+  :root{
+    --desk:#241a14; --desk-2:#160f09;
+    --parch:#e9dcc0; --parch-edge:#d7c6a1; --parch-deep:#cdb98f;
+    --ink:#2b2117; --ink-soft:#6a5638; --ink-faint:#8a7characterlabel;
+    --ink-faint:#8a734f; --rule:#b6a37e; --wax:#7c2b22; --wax-hi:#a8443a; --stamp:#465c50;
+    --serif-display:"Hoefler Text","Baskerville Old Face","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    --serif-body:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,"Times New Roman",serif;
+    --mono:"Courier New",Courier,ui-monospace,monospace;
+    --hand:"Snell Roundhand","Apple Chancery","Segoe Script","Brush Script MT",cursive;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    font-family:var(--serif-body);
+    color:var(--ink);
+    background:
+      radial-gradient(120% 90% at 50% -10%, #33251a 0%, transparent 55%),
+      repeating-linear-gradient(94deg, rgba(0,0,0,.16) 0 3px, transparent 3px 7px),
+      linear-gradient(180deg, var(--desk) 0%, var(--desk-2) 100%);
+    background-attachment:fixed;
+    min-height:100vh;
+    padding:clamp(1rem,4vw,3rem) 1rem 4rem;
+    line-height:1.5;
+  }
+
+  /* ---- non-printing header ---- */
+  .toolbar{
+    max-width:760px; margin:0 auto clamp(1.4rem,4vw,2.6rem);
+    color:#e9dcc0; text-align:center;
+  }
+  .toolbar h1{
+    font-family:var(--serif-display); font-weight:600;
+    font-size:clamp(1.1rem,3.4vw,1.55rem); letter-spacing:.02em;
+    margin:0 0 .35rem; text-wrap:balance; color:#f0e6cc;
+  }
+  .toolbar p{
+    margin:0; font-size:.82rem; letter-spacing:.03em;
+    color:#b9a988;
+  }
+  .toolbar .rule{
+    width:70px; height:1px; margin:.9rem auto 0;
+    background:linear-gradient(90deg,transparent,#8a744f,transparent);
+  }
+
+  /* ---- the desk stack ---- */
+  .stack{
+    max-width:760px; margin:0 auto;
+    display:flex; flex-direction:column; gap:clamp(1.8rem,4vw,2.8rem);
+  }
+
+  /* ---- a single paper ---- */
+  .paper{
+    position:relative; isolation:isolate;
+    padding:clamp(1.5rem,4.5vw,2.9rem) clamp(1.4rem,4.5vw,3.1rem) clamp(1.4rem,4vw,2.4rem);
+    color:var(--ink);
+    background:
+      radial-gradient(150% 120% at 22% 8%, rgba(255,251,238,.55), transparent 45%),
+      radial-gradient(130% 130% at 88% 96%, rgba(120,88,48,.20), transparent 50%),
+      repeating-linear-gradient(0deg, rgba(120,90,50,.035) 0 2px, transparent 2px 5px),
+      repeating-linear-gradient(90deg, rgba(120,90,50,.028) 0 3px, transparent 3px 8px),
+      linear-gradient(178deg, var(--parch) 0%, var(--parch-edge) 78%, var(--parch-deep) 100%);
+    border:1px solid rgba(90,64,34,.35);
+    box-shadow:
+      inset 0 0 46px rgba(84,54,22,.30),
+      inset 0 0 3px rgba(255,250,235,.5),
+      0 18px 34px -18px rgba(0,0,0,.7),
+      0 4px 10px rgba(0,0,0,.35);
+    animation:settle .5s ease both;
+  }
+  @keyframes settle{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;}}
+  @media (prefers-reduced-motion:reduce){ .paper{animation:none;} }
+
+  /* torn deckle look via clipped double frame */
+  .paper::before{
+    content:""; position:absolute; inset:8px; z-index:-1;
+    border:1px solid rgba(90,64,34,.28);
+    pointer-events:none;
+  }
+  /* faint watermark crest */
+  .paper::after{
+    content:"\2693"; position:absolute; inset:0; z-index:0;
+    display:grid; place-items:center;
+    font-size:min(46vw,320px); color:rgba(90,64,34,.045);
+    pointer-events:none;
+  }
+  .paper > *{position:relative; z-index:1;}
+
+  /* ---- masthead ---- */
+  .masthead{
+    display:flex; align-items:center; gap:1.1rem;
+    padding-bottom:.85rem; margin-bottom:.2rem;
+    border-bottom:2px solid var(--ink);
+  }
+  .crest{
+    flex:0 0 auto; width:52px; height:52px; border-radius:50%;
+    display:grid; place-items:center; font-size:1.6rem; color:var(--ink);
+    border:2px solid var(--ink);
+    box-shadow:inset 0 0 0 3px var(--parch), inset 0 0 0 4px rgba(43,33,23,.5);
+  }
+  .masthead .titles{flex:1 1 auto;}
+  .realm{
+    font-family:var(--serif-display); text-transform:uppercase;
+    letter-spacing:.34em; font-size:.72rem; margin:0 0 .15rem; color:var(--ink-soft);
+  }
+  .ministry{
+    font-family:var(--serif-display); font-weight:600;
+    font-size:clamp(1.15rem,3.6vw,1.5rem); line-height:1.08; margin:0;
+    letter-spacing:.01em; text-wrap:balance;
+  }
+  .office{
+    margin:.3rem 0 0; font-size:.74rem; font-style:italic; color:var(--ink-soft);
+    letter-spacing:.02em;
+  }
+  .motto{
+    margin-left:auto; align-self:flex-start; text-align:right;
+    font-size:.6rem; text-transform:uppercase; letter-spacing:.22em;
+    color:var(--ink-soft); max-width:6.5em; line-height:1.6;
+  }
+
+  /* ---- document-type band ---- */
+  .band{
+    display:flex; justify-content:space-between; align-items:baseline;
+    gap:1rem; flex-wrap:wrap;
+    margin:1.1rem 0 1.25rem;
+    padding:.5rem .1rem; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  }
+  .band .kind{
+    font-family:var(--serif-display); text-transform:uppercase;
+    letter-spacing:.16em; font-size:1rem; font-weight:600;
+  }
+  .band .serial{
+    font-family:var(--mono); font-size:.8rem; color:var(--ink-soft);
+    letter-spacing:.02em;
+  }
+
+  /* ---- bearer fields ---- */
+  .fields{display:grid; grid-template-columns:1fr; gap:.7rem 1.4rem; margin:0 0 1.2rem;}
+  @media(min-width:520px){ .fields{grid-template-columns:1fr 1fr;} .fields .wide{grid-column:1 / -1;} }
+  .field{display:flex; flex-direction:column; gap:.12rem;}
+  .field label{
+    font-family:var(--serif-display); text-transform:uppercase;
+    letter-spacing:.15em; font-size:.6rem; color:var(--ink-soft);
+  }
+  .field .val{
+    font-family:var(--mono); font-size:.95rem; color:var(--ink);
+    padding-bottom:.18rem; border-bottom:1px dotted rgba(90,64,34,.55);
+    font-variant-numeric:tabular-nums;
+  }
+  .field .val.small{font-size:.82rem; line-height:1.35;}
+
+  /* ---- boilerplate ---- */
+  .clause{
+    font-size:.92rem; max-width:62ch; margin:.2rem 0 0;
+    text-align:justify; hyphens:auto;
+  }
+  .clause em{font-style:italic;}
+  .clause + .clause{margin-top:.7rem;}
+
+  /* ---- footer: signature / stamp / seal ---- */
+  .foot{
+    margin-top:1.6rem; padding-top:1rem;
+    display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;
+    flex-wrap:wrap;
+  }
+  .sign{flex:1 1 220px; min-width:200px;}
+  .sign .scrawl{
+    font-family:var(--hand); font-size:1.9rem; line-height:1; color:#3a2c1c;
+    transform:rotate(-3deg); margin:0 0 .1rem; padding-left:.4rem;
+  }
+  .sign .line{border-top:1px solid var(--ink); padding-top:.28rem; max-width:16rem;}
+  .sign .who{font-size:.66rem; text-transform:uppercase; letter-spacing:.14em; color:var(--ink-soft);}
+
+  .stamp{
+    flex:0 0 auto; align-self:center;
+    border:2.5px double var(--stamp); color:var(--stamp);
+    padding:.42rem .7rem; border-radius:3px;
+    font-family:var(--serif-display); text-transform:uppercase;
+    letter-spacing:.16em; font-size:.56rem; text-align:center; line-height:1.7;
+    transform:rotate(-7deg); opacity:.72; mix-blend-mode:multiply;
+  }
+  .stamp b{display:block; font-size:.68rem; letter-spacing:.2em;}
+
+  .seal{
+    flex:0 0 auto; position:relative;
+    width:86px; height:86px; border-radius:50%;
+    display:grid; place-items:center; transform:rotate(-9deg);
+    background:radial-gradient(circle at 38% 32%, var(--wax-hi) 0%, var(--wax) 52%, #571b16 100%);
+    box-shadow:
+      inset -5px -7px 13px rgba(0,0,0,.5),
+      inset 5px 5px 11px rgba(255,170,140,.4),
+      2px 5px 9px rgba(0,0,0,.45);
+    color:#5c1d17; font-size:2rem;
+  }
+  .seal::before{
+    content:""; position:absolute; inset:-3px; border-radius:50%;
+    background:radial-gradient(circle at 60% 70%, rgba(124,43,34,.5), transparent 60%);
+    z-index:-1; filter:blur(2px);
+  }
+  .seal .emblem{ text-shadow:0 1px 0 rgba(255,175,145,.45), 0 -1px 1px rgba(0,0,0,.55); }
+  .seal .ring{
+    position:absolute; inset:9px; border-radius:50%;
+    border:1.5px solid rgba(92,29,23,.6);
+  }
+
+  /* per-type accent: guards run slightly cooler ink on the band */
+  .paper.watch .band .kind{ }
+  .paper.watch .crest, .paper.watch .masthead{ }
+
+  /* ---- print: one document per page ---- */
+  @media print{
+    @page{ margin:14mm; }
+    body{background:#fff; padding:0;}
+    .toolbar{display:none;}
+    .stack{gap:0; max-width:none;}
+    .paper{
+      box-shadow:none; border:1px solid #7a5a34;
+      break-after:page; margin:0;
+      animation:none;
+    }
+    .paper:last-child{break-after:auto;}
+    .stamp{opacity:.8;}
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  }
+</style>
+<style>
+  .journal-back{
+    display:block; max-width:760px; margin:0 auto 1.4rem; padding:.2rem;
+    font-family:var(--serif-display); color:#c7b48a; text-decoration:none;
+    font-size:.8rem; letter-spacing:.06em; text-align:center;
+  }
+  .journal-back:hover{color:#efe3c6; text-decoration:underline;}
+  .journal-back:focus-visible{outline:2px solid #c9a959; outline-offset:3px; border-radius:3px;}
+</style>
+</head>
+<body>
+<a class="journal-back" href="../../index.html">&#8592; Dober&rsquo;s Golden Vault Journal</a>
+
+
+<div class="toolbar">
+  <h1>Cover Papers &mdash; the <em>Jolly Pelican</em></h1>
+  <p>Four ministry warrants for the northern circuit. Print to hand out &mdash; one document per page.</p>
+  <div class="rule"></div>
+</div>
+
+<main class="stack">
+
+  <!-- ===================== BLOOD FEATHER ===================== -->
+  <article class="paper cook">
+    <header class="masthead">
+      <div class="crest" aria-hidden="true">&#9875;</div>
+      <div class="titles">
+        <p class="realm">Port of Luskan</p>
+        <p class="ministry">Ministry of Harbour &amp; Victualling</p>
+        <p class="office">Office of Manifests &middot; Berth Eleven</p>
+      </div>
+      <p class="motto">By tide &amp; ledger</p>
+    </header>
+
+    <div class="band">
+      <span class="kind">Cook&rsquo;s Warrant</span>
+      <span class="serial">No. LSK&ndash;VIC&ndash;4471</span>
+    </div>
+
+    <div class="fields">
+      <div class="field"><label>Bearer</label><span class="val">Blood Feather</span></div>
+      <div class="field"><label>Engaged as</label><span class="val">Galley Crew &mdash; Cook</span></div>
+      <div class="field wide"><label>Description</label><span class="val small">Kenku &middot; black plumage &middot; unremarkable height &middot; speaks in borrowed voices</span></div>
+      <div class="field"><label>Vessel</label><span class="val">Jolly Pelican</span></div>
+      <div class="field"><label>Berth</label><span class="val">Eleven, Port of Luskan</span></div>
+      <div class="field"><label>Circuit</label><span class="val small">Northern Supply &mdash; Revel&rsquo;s End receiving station</span></div>
+      <div class="field"><label>Dock agent</label><span class="val">Bethra</span></div>
+      <div class="field wide"><label>Issued</label><span class="val">Ches, 1492 DR &middot; Luskan quay</span></div>
+    </div>
+
+    <p class="clause">The bearer named above is engaged to the galley of the merchant vessel <em>Jolly Pelican</em> for the northern supply circuit, and is entitled to passage, ship&rsquo;s rations, and the freedom of the working decks in the discharge of that duty.</p>
+    <p class="clause">To be produced on demand before any officer of the Watch, the Harbour Ministry, or the receiving station. Warrant void if transferred.</p>
+
+    <div class="foot">
+      <div class="sign">
+        <p class="scrawl">H. Vellory</p>
+        <div class="line"><span class="who">Clerk of Manifests, by order of the Harbourmaster</span></div>
+      </div>
+      <div class="stamp">Port of Luskan<b>Victualling</b>Passed</div>
+      <div class="seal" aria-label="ministry wax seal"><span class="emblem" aria-hidden="true">&#9875;</span><span class="ring"></span></div>
+    </div>
+  </article>
+
+  <!-- ===================== MALTUS DRAUGHT ===================== -->
+  <article class="paper cook">
+    <header class="masthead">
+      <div class="crest" aria-hidden="true">&#9875;</div>
+      <div class="titles">
+        <p class="realm">Port of Luskan</p>
+        <p class="ministry">Ministry of Harbour &amp; Victualling</p>
+        <p class="office">Office of Manifests &middot; Berth Eleven</p>
+      </div>
+      <p class="motto">By tide &amp; ledger</p>
+    </header>
+
+    <div class="band">
+      <span class="kind">Cook&rsquo;s Warrant</span>
+      <span class="serial">No. LSK&ndash;VIC&ndash;4472</span>
+    </div>
+
+    <div class="fields">
+      <div class="field"><label>Bearer</label><span class="val">Maltus Draught</span></div>
+      <div class="field"><label>Engaged as</label><span class="val">Galley Crew &mdash; Cook</span></div>
+      <div class="field wide"><label>Description</label><span class="val small">Human &middot; middling height &middot; steady hands &middot; keeps his own counsel</span></div>
+      <div class="field"><label>Vessel</label><span class="val">Jolly Pelican</span></div>
+      <div class="field"><label>Berth</label><span class="val">Eleven, Port of Luskan</span></div>
+      <div class="field"><label>Circuit</label><span class="val small">Northern Supply &mdash; Revel&rsquo;s End receiving station</span></div>
+      <div class="field"><label>Dock agent</label><span class="val">Bethra</span></div>
+      <div class="field wide"><label>Issued</label><span class="val">Ches, 1492 DR &middot; Luskan quay</span></div>
+    </div>
+
+    <p class="clause">The bearer named above is engaged to the galley of the merchant vessel <em>Jolly Pelican</em> for the northern supply circuit, and is entitled to passage, ship&rsquo;s rations, and the freedom of the working decks in the discharge of that duty.</p>
+    <p class="clause">To be produced on demand before any officer of the Watch, the Harbour Ministry, or the receiving station. Warrant void if transferred.</p>
+
+    <div class="foot">
+      <div class="sign">
+        <p class="scrawl">H. Vellory</p>
+        <div class="line"><span class="who">Clerk of Manifests, by order of the Harbourmaster</span></div>
+      </div>
+      <div class="stamp">Port of Luskan<b>Victualling</b>Passed</div>
+      <div class="seal" aria-label="ministry wax seal"><span class="emblem" aria-hidden="true">&#9875;</span><span class="ring"></span></div>
+    </div>
+  </article>
+
+  <!-- ===================== KIARA TAWNY ===================== -->
+  <article class="paper watch">
+    <header class="masthead">
+      <div class="crest" aria-hidden="true">&#9876;</div>
+      <div class="titles">
+        <p class="realm">Port of Luskan</p>
+        <p class="ministry">Ministry of the Harbour Watch</p>
+        <p class="office">Office of Manifests &middot; Berth Eleven</p>
+      </div>
+      <p class="motto">Hold the line</p>
+    </header>
+
+    <div class="band">
+      <span class="kind">Watch&ndash;Warrant &amp; Conduct Chit</span>
+      <span class="serial">No. LSK&ndash;WCH&ndash;2208</span>
+    </div>
+
+    <div class="fields">
+      <div class="field"><label>Bearer</label><span class="val">Kiara Tawny</span></div>
+      <div class="field"><label>Engaged as</label><span class="val">Relief Guard &mdash; night rotation</span></div>
+      <div class="field wide"><label>Description</label><span class="val small">Tabaxi &middot; tawny pelt &middot; carries herself like an officer</span></div>
+      <div class="field"><label>Vessel</label><span class="val">Jolly Pelican</span></div>
+      <div class="field"><label>Berth</label><span class="val">Eleven, Port of Luskan</span></div>
+      <div class="field"><label>Circuit</label><span class="val small">Northern Supply &mdash; Revel&rsquo;s End receiving station</span></div>
+      <div class="field"><label>Reports to</label><span class="val">Ship&rsquo;s serjeant-at-arms</span></div>
+      <div class="field"><label>Issued</label><span class="val">Ches, 1492 DR</span></div>
+    </div>
+
+    <p class="clause">The bearer named above is retained as relief guard aboard the merchant vessel <em>Jolly Pelican</em> for the northern supply circuit, to stand watch-rotation and spell the standing crew across the crossing.</p>
+    <p class="clause">The bearer is vouched of <em>good conduct</em> by this Ministry and cleared to bear arms in the ship&rsquo;s service. To be produced on demand before any officer of the Watch or the receiving station.</p>
+
+    <div class="foot">
+      <div class="sign">
+        <p class="scrawl">H. Vellory</p>
+        <div class="line"><span class="who">Clerk of Manifests, by order of the Harbourmaster</span></div>
+      </div>
+      <div class="stamp">Harbour Watch<b>Conduct</b>Vouched</div>
+      <div class="seal" aria-label="ministry wax seal"><span class="emblem" aria-hidden="true">&#9876;</span><span class="ring"></span></div>
+    </div>
+  </article>
+
+  <!-- ===================== SLIM PICKENS ===================== -->
+  <article class="paper watch">
+    <header class="masthead">
+      <div class="crest" aria-hidden="true">&#9876;</div>
+      <div class="titles">
+        <p class="realm">Port of Luskan</p>
+        <p class="ministry">Ministry of the Harbour Watch</p>
+        <p class="office">Office of Manifests &middot; Berth Eleven</p>
+      </div>
+      <p class="motto">Hold the line</p>
+    </header>
+
+    <div class="band">
+      <span class="kind">Watch&ndash;Warrant &amp; Conduct Chit</span>
+      <span class="serial">No. LSK&ndash;WCH&ndash;2209</span>
+    </div>
+
+    <div class="fields">
+      <div class="field"><label>Bearer</label><span class="val">Slim Pickens</span></div>
+      <div class="field"><label>Engaged as</label><span class="val">Relief Guard &mdash; night rotation</span></div>
+      <div class="field wide"><label>Description</label><span class="val small">Halfling (lightfoot) &middot; slight &middot; sharp-eyed &middot; quiet on his feet</span></div>
+      <div class="field"><label>Vessel</label><span class="val">Jolly Pelican</span></div>
+      <div class="field"><label>Berth</label><span class="val small">Eleven &mdash; three bunks aft of guard Tawny</span></div>
+      <div class="field"><label>Circuit</label><span class="val small">Northern Supply &mdash; Revel&rsquo;s End receiving station</span></div>
+      <div class="field"><label>Reports to</label><span class="val">Ship&rsquo;s serjeant-at-arms</span></div>
+      <div class="field"><label>Issued</label><span class="val">Ches, 1492 DR</span></div>
+    </div>
+
+    <p class="clause">The bearer named above is retained as relief guard aboard the merchant vessel <em>Jolly Pelican</em> for the northern supply circuit, to stand watch-rotation and spell the standing crew across the crossing.</p>
+    <p class="clause">The bearer is vouched of <em>good conduct</em> by this Ministry and cleared to bear arms in the ship&rsquo;s service. To be produced on demand before any officer of the Watch or the receiving station.</p>
+
+    <div class="foot">
+      <div class="sign">
+        <p class="scrawl">H. Vellory</p>
+        <div class="line"><span class="who">Clerk of Manifests, by order of the Harbourmaster</span></div>
+      </div>
+      <div class="stamp">Harbour Watch<b>Conduct</b>Vouched</div>
+      <div class="seal" aria-label="ministry wax seal"><span class="emblem" aria-hidden="true">&#9876;</span><span class="ring"></span></div>
+    </div>
+  </article>
+
+</main>
+
+</body>
+</html>
