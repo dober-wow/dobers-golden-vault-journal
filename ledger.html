@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crew's Ledger — The Golden Vault Journal</title>
+    <meta name="description"
+        content="Rolling account book for the Keys From The Golden Vault crew — receipts, escrow, contracts, and outfitting.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- The Crew's Ledger: a spreadsheet in the Dark Parchment theme --- */
+        .asof {
+            text-align: center;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin: -0.5rem 0 0.5rem;
+        }
+        .keeping {
+            background: var(--bg-accent);
+            border-left: 4px solid var(--accent-gold);
+            padding: 0.9rem 1.4rem;
+            margin: 1.5rem 0;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .keeping strong { color: var(--accent-gold); font-style: normal; }
+
+        .sheet-cap {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 2.5rem 0 0.6rem;
+        }
+        .sheet-cap h2 {
+            border: none;
+            padding: 0;
+            margin: 0;
+            color: var(--accent-gold);
+            font-size: 1.35rem;
+        }
+        .sheet-cap .hint {
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-style: italic;
+        }
+
+        /* Horizontal scroll shell so the page body never scrolls sideways */
+        .sheet-scroll {
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+        }
+
+        table.sheet {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 540px;
+            font-family: 'Georgia', serif;
+            background: var(--bg-secondary);
+        }
+        table.sheet caption { display: none; }
+
+        table.sheet thead th {
+            background: var(--bg-accent);
+            color: var(--accent-gold);
+            font-family: 'Cinzel', 'Georgia', serif;
+            font-weight: 600;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-align: left;
+            padding: 0.7rem 0.9rem;
+            border-bottom: 2px solid var(--accent-gold);
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+        }
+        table.sheet th.num, table.sheet td.num {
+            text-align: right;
+            font-variant-numeric: tabular-nums lining-nums;
+            white-space: nowrap;
+        }
+        table.sheet tbody td {
+            padding: 0.62rem 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.92rem;
+            vertical-align: top;
+        }
+        table.sheet tbody tr:nth-child(even) td { background: rgba(45, 37, 32, 0.35); }
+        table.sheet tbody tr:hover td { background: rgba(201, 169, 89, 0.08); }
+
+        td.acct { color: var(--accent-gold); font-weight: bold; white-space: nowrap; }
+        td.memo { color: var(--text-primary); }
+        td.memo small { color: var(--text-secondary); display: block; font-size: 0.8rem; }
+        .col-sess { color: var(--text-secondary); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+        .in  { color: var(--accent-gold); }
+        .out { color: var(--warn-text); }
+        .muted { color: var(--text-secondary); font-style: italic; }
+
+        table.sheet tfoot td {
+            padding: 0.7rem 0.9rem;
+            border-top: 2px solid var(--accent-gold);
+            font-family: 'Cinzel', 'Georgia', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+        table.sheet tfoot td.num { font-family: 'Georgia', serif; font-size: 1rem; font-weight: bold; letter-spacing: 0; }
+
+        /* status pills for the escrow sheet */
+        .pill {
+            display: inline-block;
+            font-family: 'Cinzel', 'Georgia', serif;
+            font-size: 0.66rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.18rem 0.5rem;
+            border-radius: 999px;
+            border: 1px solid currentColor;
+            white-space: nowrap;
+        }
+        .pill.escrow { color: var(--accent-gold); }
+        .pill.signed { color: #8fb98f; }
+        .pill.contingent { color: var(--warn-text); }
+
+        .footnote { color: var(--text-secondary); font-size: 0.82rem; font-style: italic; margin-top: 0.6rem; }
+    </style>
+</head>
+
+<body>
+    <main>
+        <a href="index.html"
+            style="display: inline-block; color: #c9a959; text-decoration: none; margin-bottom: 1rem;">←
+            Back to Journal</a>
+
+        <h1>🗝️ The Crew's Ledger</h1>
+        <p class="asof">A rolling account book · <strong style="color:var(--accent-gold)">as of Session 7</strong> — Day 5, before Revel's End</p>
+
+        <div class="keeping">
+            <strong>How this book is kept.</strong> These sheets record the crew's <em>moves</em> — coin that changed
+            hands, contracts signed, coin out for laundering — not the whole of what already rests in each purse.
+            Opening balances are not tallied here. New rows are added each session.
+        </div>
+
+        <!-- ===================== SHEET 1: TRANSACTIONS ===================== -->
+        <div class="sheet-cap">
+            <h2>Ledger — Recorded Transactions</h2>
+            <span class="hint">every hand-to-hand move, by session</span>
+        </div>
+        <div class="sheet-scroll">
+            <table class="sheet">
+                <thead>
+                    <tr>
+                        <th>Session</th>
+                        <th>Account</th>
+                        <th>Entry</th>
+                        <th class="num">In (gp)</th>
+                        <th class="num">Out (gp)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Append new transactions above the totals each session -->
+                    <tr>
+                        <td class="col-sess">S2</td>
+                        <td class="acct">Blood Feather</td>
+                        <td class="memo">Lifted with the dealer's pass card <small>the Stygian Gambit</small></td>
+                        <td class="num in">+15</td>
+                        <td class="num muted">—</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sess">S6</td>
+                        <td class="acct">Blood Feather</td>
+                        <td class="memo">Codex payout <small>Vasil Talistrome, honest share</small></td>
+                        <td class="num in">+550</td>
+                        <td class="num muted">—</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sess">S6</td>
+                        <td class="acct">Slim Pickens</td>
+                        <td class="memo">Codex payout <small>Vasil Talistrome, honest share</small></td>
+                        <td class="num in">+550</td>
+                        <td class="num muted">—</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sess">S6</td>
+                        <td class="acct">Capt. Kiara Tawny</td>
+                        <td class="memo">Codex payout <small>Vasil Talistrome, honest share</small></td>
+                        <td class="num in">+550</td>
+                        <td class="num muted">—</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sess">S6</td>
+                        <td class="acct">Whole crew</td>
+                        <td class="memo">One Golden Vault uncommon, apiece <small>quartermaster stock</small></td>
+                        <td class="num muted">in kind</td>
+                        <td class="num muted">—</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sess">S7</td>
+                        <td class="acct">Capt. Kiara Tawny</td>
+                        <td class="memo">Rapier, +1 <small>bought clean, for the ice</small></td>
+                        <td class="num muted">—</td>
+                        <td class="num out">−500</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sess">S7</td>
+                        <td class="acct">Capt. Kiara Tawny</td>
+                        <td class="memo">Potion of Healing ×2</td>
+                        <td class="num muted">—</td>
+                        <td class="num out">−100</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sess">S7</td>
+                        <td class="acct">Slim Pickens</td>
+                        <td class="memo">Potion of Healing ×2, Greater Healing ×1</td>
+                        <td class="num muted">—</td>
+                        <td class="num out">−250</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Totals — recorded coin</td>
+                        <td class="num in">+1,665</td>
+                        <td class="num out">−850</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <p class="footnote">Plus three Golden Vault uncommon items, one to each of the three who stood the Codex job.</p>
+
+        <!-- ===================== SHEET 2: ESCROW & RECEIVABLES ===================== -->
+        <div class="sheet-cap">
+            <h2>Escrow &amp; Receivables</h2>
+            <span class="hint">coin promised or in the wash — not yet in hand</span>
+        </div>
+        <div class="sheet-scroll">
+            <table class="sheet">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>With / From</th>
+                        <th class="num">Gross</th>
+                        <th class="num">Fee</th>
+                        <th class="num">Net to Crew</th>
+                        <th>Status</th>
+                        <th>Released</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="memo">Marked casino gold <small>Stygian Gambit proceeds, Slim's keeping</small></td>
+                        <td class="acct">Igor Irontongue</td>
+                        <td class="num">9,000</td>
+                        <td class="num out">−1,350 <small style="color:var(--text-secondary)">15%</small></td>
+                        <td class="num in">7,650</td>
+                        <td><span class="pill escrow">In the wash</span></td>
+                        <td class="muted">On return from Revel's End · 7–10 days</td>
+                    </tr>
+                    <tr>
+                        <td class="memo">Vault-key fee <small>250 gp × 4 of the crew</small></td>
+                        <td class="acct">Varrin Axebreaker</td>
+                        <td class="num muted">—</td>
+                        <td class="num muted">—</td>
+                        <td class="num in">1,000</td>
+                        <td><span class="pill signed">Signed, unpaid</span></td>
+                        <td class="muted">On delivery of Korda's key</td>
+                    </tr>
+                    <tr>
+                        <td class="memo">Gauntlgrym vault share <small>of all coin recovered</small></td>
+                        <td class="acct">Varrin Axebreaker</td>
+                        <td class="num muted">TBD</td>
+                        <td class="num muted">—</td>
+                        <td class="num in">15%</td>
+                        <td><span class="pill contingent">Contingent</span></td>
+                        <td class="muted">When the vault opens</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="footnote">The Axebreaker clan records are excluded from the vault share — not for sale, not in the split.
+            <em>Igor can clean the metal, not Mammon's ledger.</em></p>
+
+        <!-- ===================== SHEET 3: PER-PC ===================== -->
+        <div class="sheet-cap">
+            <h2>By the Purse — Recorded This Chapter</h2>
+            <span class="hint">net of the moves above only; opening purses not counted</span>
+        </div>
+        <div class="sheet-scroll">
+            <table class="sheet">
+                <thead>
+                    <tr>
+                        <th>Character</th>
+                        <th class="num">In</th>
+                        <th class="num">Out</th>
+                        <th class="num">Net (recorded)</th>
+                        <th>Still owed to them</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="acct">Blood Feather</td>
+                        <td class="num in">+565</td>
+                        <td class="num muted">—</td>
+                        <td class="num in">+565</td>
+                        <td class="muted">Share of the Varrin contract</td>
+                    </tr>
+                    <tr>
+                        <td class="acct">Slim Pickens</td>
+                        <td class="num in">+550</td>
+                        <td class="num out">−250</td>
+                        <td class="num in">+300</td>
+                        <td class="muted">7,650 gp clean (via Igor) · contract share</td>
+                    </tr>
+                    <tr>
+                        <td class="acct">Capt. Kiara Tawny</td>
+                        <td class="num in">+550</td>
+                        <td class="num out">−600</td>
+                        <td class="num out">−50</td>
+                        <td class="muted">Share of the Varrin contract</td>
+                    </tr>
+                    <tr>
+                        <td class="acct">Maltus Draught</td>
+                        <td class="num muted">—</td>
+                        <td class="num muted">—</td>
+                        <td class="num muted">—</td>
+                        <td class="muted">Share of the Varrin contract · new to the crew</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Recorded totals</td>
+                        <td class="num in">+1,665</td>
+                        <td class="num out">−850</td>
+                        <td class="num in">+815</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Keys From The Golden Vault • The Crew's Ledger • kept between jobs</p>
+        </footer>
+    </main>
+</body>
+
+</html>
