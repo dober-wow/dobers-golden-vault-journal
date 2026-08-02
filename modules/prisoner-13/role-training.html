@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Player handout: Varrin's drill — role training for the Revel's End covers, from Keys From The Golden Vault - Prisoner 13.">
-<title>The Drill — Aboard the Cormorant</title>
+<meta name="description" content="Player fact sheets: cover identities and rules for the Revel's End job, from Keys From The Golden Vault - Prisoner 13.">
+<title>Cover Fact Sheets — Prisoner 13</title>
 <style>
   :root{
     --desk:#241a14; --desk-2:#160f09;
@@ -22,7 +22,7 @@
       repeating-linear-gradient(94deg, rgba(0,0,0,.16) 0 3px, transparent 3px 7px),
       linear-gradient(180deg, var(--desk) 0%, var(--desk-2) 100%);
     background-attachment:fixed; min-height:100vh;
-    padding:clamp(1rem,4vw,3rem) 1rem 4rem; line-height:1.55;
+    padding:clamp(1rem,4vw,3rem) 1rem 4rem; line-height:1.5;
   }
   .toolbar{ max-width:760px; margin:0 auto clamp(1.4rem,4vw,2.6rem); color:#e9dcc0; text-align:center; }
   .toolbar a{ color:#c9a959; text-decoration:none; font-size:.85rem; }
@@ -40,31 +40,34 @@
       linear-gradient(160deg, var(--parch) 0%, #e2d4ac 100%);
     border:1px solid #b8a679; border-radius:3px;
     box-shadow:0 10px 40px rgba(0,0,0,.5), inset 0 0 50px rgba(120,90,40,.12);
-    padding:clamp(1.6rem,4vw,2.6rem);
+    padding:clamp(1.4rem,4vw,2.2rem);
     page-break-after:always;
   }
   .card h2{
-    font-family:var(--serif-display); font-size:1.15rem; letter-spacing:.1em;
-    text-transform:uppercase; margin:0 0 .2rem; color:var(--ink);
-    border-bottom:2px solid var(--ink); padding-bottom:.5rem;
+    font-family:var(--serif-display); font-size:1.1rem; letter-spacing:.1em;
+    text-transform:uppercase; margin:0; color:var(--ink);
+    border-bottom:2px solid var(--ink); padding-bottom:.45rem;
   }
-  .card .who{ font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint);
-    margin:.5rem 0 1.2rem; }
+  .card .who{ font-size:.76rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint);
+    margin:.45rem 0 1rem; }
   .card .who b{ color:var(--wax); }
-  .card h3{ font-family:var(--serif-display); font-size:.82rem; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--ink-soft); margin:1.4rem 0 .4rem; }
-  .card p{ margin:.45rem 0; font-size:.94rem; }
-  .card ul{ margin:.4rem 0 .6rem 1.2rem; padding:0; font-size:.94rem; }
-  .card li{ margin:.35rem 0; }
-  .card blockquote{
-    margin:.8rem 0 .8rem .6rem; padding:.2rem 0 .2rem 1rem;
-    border-left:3px solid var(--rule); font-style:italic; color:var(--ink-soft); font-size:.92rem;
+
+  table.facts{ width:100%; border-collapse:collapse; margin:.4rem 0 .9rem; }
+  table.facts td{
+    padding:.42rem .6rem; border-bottom:1px solid rgba(138,115,79,.35);
+    font-size:.9rem; vertical-align:top;
   }
-  .card .never{
-    border-left:3px solid var(--wax); background:rgba(124,43,34,.07);
-    padding:.7rem 1rem; margin-top:1.3rem; font-size:.9rem;
+  table.facts td.k{
+    width:34%; font-variant:small-caps; letter-spacing:.06em;
+    color:var(--ink-soft); white-space:nowrap;
   }
-  .card .never b{ color:var(--wax); letter-spacing:.08em; }
+  table.facts td.v b{ color:var(--wax); }
+
+  .card h3{ font-family:var(--serif-display); font-size:.78rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--ink-soft); margin:1rem 0 .3rem; }
+  .card ul{ margin:.2rem 0 .4rem 1.15rem; padding:0; font-size:.9rem; }
+  .card li{ margin:.3rem 0; }
+  .card li b{ color:var(--wax); }
   @media print{
     body{ background:none; padding:0; }
     .toolbar a{ display:none; }
@@ -76,10 +79,8 @@
 
 <div class="toolbar">
   <a href="cover-papers.html">&#8592; Cover Papers</a>
-  <h1>The Drill &mdash; Aboard the <em>Cormorant</em></h1>
-  <p>Varrin runs the mess table every night of the crossing. The ink is tested before it dries &mdash;
-     and the corrections come in character, without warning. Never Varrin teaching. Only the world,
-     rehearsing its disbelief.</p>
+  <h1>Cover Fact Sheets &mdash; Prisoner 13</h1>
+  <p>One sheet per player. Know your sheet cold before the ice.</p>
   <div class="rule"></div>
 </div>
 
@@ -87,112 +88,109 @@
 
   <!-- ===================== ALL HANDS ===================== -->
   <section class="card">
-    <h2>The Table Rules &mdash; All Hands</h2>
-    <p class="who">As Varrin laid them down, mess table, first night out</p>
+    <h2>Sheet 0 &mdash; Rules for Everyone</h2>
+    <p class="who">Applies to all three covers, boat and prison alike</p>
 
-    <h3>On the boat</h3>
-    <blockquote>"Until she makes the ice, you answer to her master like any other crew. Nobody
-      smuggles themselves into a prison by being memorable on the boat."</blockquote>
+    <h3>Aboard the Cormorant</h3>
     <ul>
-      <li>Cover names from here forward. Study them on the crossing &mdash; long enough to learn a
-        name well enough to answer to it in your sleep.</li>
-      <li>Where an answer snags, the correction is cold and in character &mdash; a raised eyebrow,
-        a single hard tap on the wood, <em>wrong</em> said the way a door shuts.</li>
+      <li>Cover names <b>only</b>, from the gangplank on. A slipped name dies at sea.</li>
+      <li>You answer to the ship's master like any other crew.</li>
+      <li>Be unmemorable. Nobody smuggles themselves into a prison by being memorable on the boat.</li>
     </ul>
 
-    <h3>Inside the walls &mdash; what Varrin's intel buys (months old, bought at a distance)</h3>
+    <h3>Inside Revel's End (Varrin's intel — months old)</h3>
     <ul>
-      <li><b>Shifts:</b> relief guards take whatever the duty sergeant hands them &mdash; and new
-        arrivals get the night watch, because nobody senior wants it.</li>
-      <li><b>Night is the tower's hours:</b> fewer bodies on the floor, but the sightlines never
-        close. The one thing a night guard must never do is be somewhere the tower cannot account
-        for.</li>
-      <li><b>After dark:</b> irons go on any prisoner moved. Cells are never opened at night short
-        of the warden's own order. A guard who lingers at a cell door gets asked why.</li>
+      <li>Prisoners are numbers. It is <b>Thirteen</b>, never a name.</li>
+      <li>Shifts come from the duty sergeant. New arrivals draw the <b>night watch</b>.</li>
+      <li>At night the tower must be able to account for you <b>at all times</b>.</li>
+      <li>Irons go on any prisoner moved after dark.</li>
+      <li>Cells never open at night without the warden's own order.</li>
+      <li>A guard who lingers at a cell door gets asked why.</li>
+      <li>To talk to Thirteen you need a reason to be standing there <b>that survives the asking</b>.</li>
     </ul>
-
-    <div class="never"><b>THE THIRTEEN PROBLEM</b> &mdash; "If you mean to talk to Thirteen on the
-      night watch, you will need a reason to be standing there that survives the asking." That
-      reason is the whole job. Nothing else in this book matters if you don't have it.</div>
   </section>
 
   <!-- ===================== KESS ===================== -->
   <section class="card">
-    <h2>Kess &mdash; Of the Mintarn Roost</h2>
-    <p class="who">Kenku &middot; relief guard &middot; <b>three years on the rotation, according to this ink</b></p>
+    <h2>Sheet 1 &mdash; Kess</h2>
+    <p class="who">Worn by <b>Blood Feather</b></p>
 
-    <h3>The paper</h3>
-    <p>Genuine, and it slides across the boards without ceremony. Three years on the Mintarn Roost
-       rotation. The ink says so; your answers had better.</p>
+    <table class="facts">
+      <tr><td class="k">Name</td><td class="v"><b>Kess</b>, of the Mintarn Roost</td></tr>
+      <tr><td class="k">On the paper</td><td class="v">Kenku &middot; relief guard</td></tr>
+      <tr><td class="k">Paper</td><td class="v">Genuine (stolen &mdash; the real Kess is held outside Luskan)</td></tr>
+      <tr><td class="k">Service history</td><td class="v">Three years on the Mintarn Roost rotation</td></tr>
+      <tr><td class="k">Answers to drill</td><td class="v">Who trained you &middot; what the Roost smells like in winter &middot; the boredom of a third year on the same walls</td></tr>
+    </table>
 
-    <h3>What the quizzing sounds like</h3>
-    <blockquote>"Kess. Service history &mdash; quick, now. Who trained you? ... And what's the Roost
-      smell like, come winter? You'd know it in your sleep, if you'd stood a watch there."</blockquote>
-    <p>The drill is not the roster line &mdash; it is the things only a body that stood there would
-       hold: the smell of the Roost in winter, the name of the sergeant who ran you, the boredom
-       of a third year on the same walls. Build the memories until they answer themselves.</p>
+    <h3>Conduct</h3>
+    <ul>
+      <li>Borrowed voices stay <b>stowed</b> unless the legend itself would use them.</li>
+      <li>When stared at &mdash; and you will be &mdash; the name <b>Kess</b> answers before the question is asked.</li>
+    </ul>
 
-    <h3>Your liability</h3>
-    <p>You are the only kenku this coast has seen, and the Varkenbluff posters sketch one. Crew,
-       dockhands, clerks &mdash; they will look, every scene, even when nothing comes of it. The
-       legend exists to give that noticing an answer: the name <em>Kess</em> must be standing there
-       before the question arrives. Borrowed voices stay stowed unless the legend would use them.</p>
-
-    <div class="never"><b>NEVER</b> &mdash; be memorable on the boat. A kenku is memorable enough.</div>
+    <h3>Liabilities</h3>
+    <ul>
+      <li>Only kenku anyone on this coast has seen.</li>
+      <li>The Varkenbluff wanted posters sketch a kenku.</li>
+    </ul>
   </section>
 
   <!-- ===================== MARTA GREEL ===================== -->
   <section class="card">
-    <h2>Marta Greel &mdash; The Clerk's Error</h2>
-    <p class="who">Human &middot; relief guard &middot; <b>answers only to "Greel," and always has</b></p>
+    <h2>Sheet 2 &mdash; Marta Greel</h2>
+    <p class="who">Worn by <b>Maltus Draught</b></p>
 
-    <h3>The paper</h3>
-    <p>Genuine. "Marta Greel. Human, relief guard &mdash; a clerk's error is why she goes by 'Greel'
-       on the manifest and always has. Nobody at Revel's End will think twice."</p>
+    <table class="facts">
+      <tr><td class="k">Name on manifest</td><td class="v"><b>Marta Greel</b> &mdash; a clerk's error, never corrected</td></tr>
+      <tr><td class="k">Answers to</td><td class="v"><b>"Greel."</b> Always has.</td></tr>
+      <tr><td class="k">On the paper</td><td class="v">Human &middot; relief guard</td></tr>
+      <tr><td class="k">Paper</td><td class="v">Genuine (stolen &mdash; the real owner is held outside Luskan)</td></tr>
+      <tr><td class="k">Answers to drill</td><td class="v">How the error survived the muster roll &middot; last posting &middot; watch rotation (dawn or dusk)</td></tr>
+    </table>
 
-    <h3>What the quizzing sounds like</h3>
-    <blockquote>"Marta Greel. A clerk's error put you in a guard's coat &mdash; so how does a
-      clerk's error survive the muster roll? Last posting. Watch rotation &mdash; dawn or dusk?"</blockquote>
-    <p>The error is the legend's soft spot and Varrin drills it first: the story must hold not just
-       the name but <em>how it survived</em> &mdash; who signed off, which posting, which rotation
-       you stood. Know the answer to "dawn or dusk" the way you know your own hands.</p>
+    <h3>Conduct</h3>
+    <ul>
+      <li>If someone reads "Marta" aloud: one tired shrug. <b>Never explain twice</b> &mdash; men who tell the story twice rehearsed it.</li>
+      <li>Steady hands, counted words. Be the man at peace with the ministry's paperwork.</li>
+    </ul>
 
-    <h3>Your liability</h3>
-    <p>Someone will read "Marta" off the roster and look up. The answer is a tired shrug from a man
-       who stopped fighting the ministry's paperwork years ago &mdash; once, and never twice. Men
-       who tell the story twice are men who rehearsed it.</p>
-
-    <div class="never"><b>NEVER</b> &mdash; flinch at the name. It has been yours for years. Be
-      bored by it.</div>
+    <h3>Liabilities</h3>
+    <ul>
+      <li>The name itself &mdash; every roster reading is a small test.</li>
+    </ul>
   </section>
 
   <!-- ===================== NERIS FANE ===================== -->
   <section class="card">
-    <h2>Neris Fane &mdash; The Name Still Under the Knife</h2>
-    <p class="who">Moon-elf &middot; relief guard &middot; <b>paperless until Luskan &mdash; the forgery is still being cut</b></p>
+    <h2>Sheet 3 &mdash; Neris Fane</h2>
+    <p class="who">Worn by <b>Freya</b></p>
 
-    <h3>The paper</h3>
-    <p>The packet's one pure forgery, cut by Bethra's people when the roster changed at the Bridge
-       Gate. No living owner behind the name &mdash; so no record can contradict it, and none can
-       back it. Until Luskan, you sail carrying nothing but the name itself. Learn it deepest of
-       the three: the paper will have to catch up to <em>you</em>.</p>
+    <table class="facts">
+      <tr><td class="k">Name</td><td class="v"><b>Neris Fane</b></td></tr>
+      <tr><td class="k">On the paper</td><td class="v">Moon-elf &middot; relief guard</td></tr>
+      <tr><td class="k">Paper</td><td class="v"><b>Pure forgery</b> &mdash; cut by Bethra's people in Luskan when the roster changed at the Bridge Gate</td></tr>
+      <tr><td class="k">Status</td><td class="v">Paperless until Luskan; the paper catches up to her</td></tr>
+      <tr><td class="k">The record</td><td class="v">No living owner behind the name &mdash; nothing can contradict it, and nothing can back it</td></tr>
+    </table>
 
-    <h3>What the drill sounds like &mdash; he saves the hardest scrutiny for last</h3>
-    <blockquote>"Now you. ... Hood down when you speak &mdash; a guard doesn't hide her face at
-      table. Gloves off. Eyes up, not down: you're not ashamed, you're bored. [flat] Your name."</blockquote>
-    <p>This is the discipline that matters: hiding <em>is</em> the tell. A relief guard among crew
-       has nothing to conceal &mdash; face open, hands bare, gaze level and uninterested. Save the
-       hood and gloves for the wind and the watch, where every soul on deck wears them too; at any
-       table, under any question, you are simply bored.</p>
+    <h3>Conduct &mdash; at table, among crew</h3>
+    <ul>
+      <li><b>Hood down</b> when speaking &mdash; a guard doesn't hide her face at table.</li>
+      <li><b>Gloves off. Eyes up</b>, not down &mdash; you're not ashamed, you're bored.</li>
+    </ul>
 
-    <h3>Your liability</h3>
-    <p>The amber-gold eyes, and what crackles about you when the blood is up &mdash; anyone who
-       holds your gaze too long reads it. So the gaze gives them nothing worth holding: level,
-       brief, bored. And the other thing does not happen where it can be seen. Not once. There is
-       no story that survives a witnessed surge.</p>
+    <h3>Conduct &mdash; on deck and on watch</h3>
+    <ul>
+      <li>Hood and gloves are fine where every soul wears them: wind, watch, battlements.</li>
+      <li>Gaze stays level, brief, and bored &mdash; give no one anything worth holding.</li>
+    </ul>
 
-    <div class="never"><b>NEVER</b> &mdash; hide at the table. Concealment reads as shame and shame
-      reads as guilt. Boredom is the only safe face.</div>
+    <h3>Liabilities</h3>
+    <ul>
+      <li>Amber-gold eyes; the air crackles when the blood is up &mdash; held gazes read it as fey.</li>
+      <li><b>Nothing fey happens where it can be seen. Not once.</b> No story survives a witnessed surge.</li>
+    </ul>
   </section>
 
 </main>
