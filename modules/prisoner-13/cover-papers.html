@@ -239,6 +239,28 @@
   }
   .journal-back:hover{color:#efe3c6; text-decoration:underline;}
   .journal-back:focus-visible{outline:2px solid #c9a959; outline-offset:3px; border-radius:3px;}
+
+/* ---- mess-table drill cards ---- */
+.drill{
+  max-width:760px; margin:-1.2rem auto 0;
+  background:rgba(233,220,192,.06);
+  border:1px solid rgba(182,163,126,.35);
+  border-left:3px solid var(--wax);
+  border-radius:4px;
+  padding:1rem 1.3rem 1.1rem;
+  color:#cdbd9a;
+  font-size:.86rem; line-height:1.55;
+}
+.drill h3{
+  margin:0 0 .45rem;
+  font-family:var(--serif-display);
+  font-size:.8rem; letter-spacing:.14em; text-transform:uppercase;
+  color:#e0d0a8;
+}
+.drill h3 b{ color:#f0e6cc; letter-spacing:.06em; }
+.drill p{ margin:.35rem 0; }
+.drill .risk{ color:#c98d7a; }
+@media print{ .drill{ display:none; } }
 </style>
 </head>
 <body>
@@ -278,6 +300,8 @@
       <div class="field"><label>Vessel</label><span class="val">Cormorant</span></div>
       <div class="field"><label>Berth</label><span class="val">Eleven, Port of Luskan</span></div>
       <div class="field"><label>Circuit</label><span class="val small">Northern Supply &mdash; Revel&rsquo;s End receiving station</span></div>
+      <div class="field"><label>Prior service</label><span class="val small">Gate-watch, Mintarn harbour fort &mdash; four years</span></div>
+      <div class="field"><label>Posting</label><span class="val small">Vault detail, second rotation</span></div>
       <div class="field"><label>Reports to</label><span class="val">Ship&rsquo;s serjeant-at-arms</span></div>
       <div class="field"><label>Issued</label><span class="val">Ches, 1492 DR &middot; Luskan quay</span></div>
     </div>
@@ -294,6 +318,17 @@
       <div class="seal" aria-label="ministry wax seal"><span class="emblem" aria-hidden="true">&#9876;</span><span class="ring"></span></div>
     </div>
   </article>
+
+  <aside class="drill">
+    <h3>The mess-table drill &mdash; <b>Kess</b></h3>
+    <p>Four years on the gate-watch of the Mintarn harbour fort before the Postings
+       Division moved him north; posted to the vault detail, second rotation. Knows
+       gate protocol cold and lets it show &mdash; that is the legend doing its work.</p>
+    <p class="risk">The kenku is never anonymous: he is the only kenku this coast has
+       seen and the Varkenbluff posters sketch one. Every held look, nudge, and
+       too-casual question must find the name <em>Kess</em> already standing there.
+       Borrowed voices stay stowed unless the legend would use them.</p>
+  </aside>
 
   <!-- ===================== MALTUS DRAUGHT - worn as MARTA GREEL ===================== -->
   <article class="paper watch">
@@ -319,6 +354,8 @@
       <div class="field"><label>Vessel</label><span class="val">Cormorant</span></div>
       <div class="field"><label>Berth</label><span class="val">Eleven, Port of Luskan</span></div>
       <div class="field"><label>Circuit</label><span class="val small">Northern Supply &mdash; Revel&rsquo;s End receiving station</span></div>
+      <div class="field"><label>Prior service</label><span class="val small">Load manifest &mdash; stores &amp; tally, Luskan quays</span></div>
+      <div class="field"><label>Posting</label><span class="val small">Stores escort, second rotation</span></div>
       <div class="field"><label>Reports to</label><span class="val">Ship&rsquo;s serjeant-at-arms</span></div>
       <div class="field"><label>Issued</label><span class="val">Ches, 1492 DR &middot; Luskan quay</span></div>
     </div>
@@ -335,6 +372,17 @@
       <div class="seal" aria-label="ministry wax seal"><span class="emblem" aria-hidden="true">&#9876;</span><span class="ring"></span></div>
     </div>
   </article>
+
+  <aside class="drill">
+    <h3>The mess-table drill &mdash; <b>Marta Greel</b></h3>
+    <p>The roster line reads <em>Marta</em> &mdash; a clerk&rsquo;s error, cramped onto
+       the page, never corrected. He answers only to <em>Greel</em> and the story is
+       he stopped fighting it years ago; a man at peace with the ministry&rsquo;s
+       paperwork is a man the ministry believes. Load manifest by trade &mdash; stores
+       and tally &mdash; so his steady hands and counted words fit the paper.</p>
+    <p class="risk">If anyone reads the full name aloud, the drill is a tired shrug,
+       not a flinch.</p>
+  </aside>
 
   <!-- ===================== FREYA - worn as NERIS FANE (Bethra's forgery) ===================== -->
   <article class="paper watch">
@@ -360,6 +408,8 @@
       <div class="field"><label>Vessel</label><span class="val">Cormorant</span></div>
       <div class="field"><label>Berth</label><span class="val">Eleven, Port of Luskan</span></div>
       <div class="field"><label>Circuit</label><span class="val small">Northern Supply &mdash; Revel&rsquo;s End receiving station</span></div>
+      <div class="field"><label>Prior service</label><span class="val small">Harbour Watch, Neverwinter &mdash; rolls in transfer</span></div>
+      <div class="field"><label>Posting</label><span class="val small">Wall watch, second rotation</span></div>
       <div class="field"><label>Reports to</label><span class="val">Ship&rsquo;s serjeant-at-arms</span></div>
       <div class="field"><label>Issued</label><span class="val">Ches, 1492 DR &middot; Luskan quay</span></div>
     </div>
@@ -376,6 +426,17 @@
       <div class="seal" aria-label="ministry wax seal"><span class="emblem" aria-hidden="true">&#9876;</span><span class="ring"></span></div>
     </div>
   </article>
+
+  <aside class="drill">
+    <h3>The mess-table drill &mdash; <b>Neris Fane</b></h3>
+    <p>No living owner behind the name and no service record: a clerk who checks the
+       Mintarn rolls finds <em>nothing at all</em>. The story carries it &mdash; her
+       rolls ride a slower courier from Neverwinter, transfers always lag a season,
+       and the Watch stamp on the chit is vouch enough for the crossing.</p>
+    <p class="risk">Hood up, gloves on, eyes down: the amber-gold eyes and the
+       skin-crackle read fey-touched to anyone who holds her gaze, and a witnessed
+       surge is immediate suspicion. Varrin drills her hardest of the three.</p>
+  </aside>
 
 </main>
 
