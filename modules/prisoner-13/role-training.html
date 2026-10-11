@@ -66,6 +66,11 @@
   .card h3{ font-family:var(--serif-display); font-size:.78rem; letter-spacing:.12em; text-transform:uppercase;
     color:var(--ink-soft); margin:1rem 0 .3rem; }
   .card ul{ margin:.2rem 0 .4rem 1.15rem; padding:0; font-size:.9rem; }
+  .card img.paper{ display:block; width:100%; max-width:420px; height:auto; margin:.6rem auto .2rem;
+    border-radius:4px; box-shadow:0 4px 14px rgba(0,0,0,.35); }
+  .card img.packet{ max-width:100%; }
+  .card.stood-down{ opacity:.6; }
+  .note{ font-size:.85rem; font-style:italic; color:var(--ink-soft); }
   .card li{ margin:.3rem 0; }
   .card li b{ color:var(--wax); }
   @media print{
@@ -91,7 +96,9 @@
     <h2>Sheet 0 &mdash; Rules for Everyone</h2>
     <p class="who">Applies to all three covers, boat and prison alike</p>
 
-    <h3>Aboard the Cormorant</h3>
+    <img class="paper packet" src="img/s7_papers_packet.jpg" alt="The three watch-warrants laid out on an oilskin packet">
+
+    <h3>Aboard the Jolly Pelican</h3>
     <ul>
       <li>Cover names <b>only</b>, from the gangplank on. A slipped name dies at sea.</li>
       <li>You answer to the ship's master like any other crew.</li>
@@ -114,6 +121,7 @@
   <section class="card">
     <h2>Sheet 1 &mdash; Kess</h2>
     <p class="who">Worn by <b>Blood Feather</b></p>
+    <img class="paper" src="img/s7_paper_kess.jpg" alt="Watch-warrant for Kess">
 
     <table class="facts">
       <tr><td class="k">Name</td><td class="v"><b>Kess</b>, of the Mintarn Roost</td></tr>
@@ -142,9 +150,66 @@
     </ul>
   </section>
 
-  <!-- ===================== MARTA GREEL ===================== -->
+  <!-- ===================== QUIET SNOW ===================== -->
   <section class="card">
-    <h2>Sheet 2 &mdash; Marta Greel</h2>
+    <h2>Sheet 2 &mdash; Quiet Snow</h2>
+    <p class="who">Worn by <b>Kiara</b></p>
+    <img class="paper" src="img/s7_paper_quiet_snow.jpg" alt="Watch-warrant for Quiet Snow">
+
+    <table class="facts">
+      <tr><td class="k">Name</td><td class="v"><b>Quiet Snow</b></td></tr>
+      <tr><td class="k">On the paper</td><td class="v">Tabaxi &middot; relief guard &middot; second rotation</td></tr>
+    </table>
+
+    <h3>The legend &mdash; yours to write</h3>
+    <p class="note">Not written yet. If someone asks, you answer &mdash; and your answer stands from then on.
+      The questions a bored officer asks:</p>
+    <ul>
+      <li>Who trained you?</li>
+      <li>Your last posting?</li>
+      <li>Why the north?</li>
+    </ul>
+
+    <h3>Conduct</h3>
+    <ul>
+      <li>You answer to the ship's master like any other crew.</li>
+      <li>The name <b>Quiet Snow</b> answers before the question is asked.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== POCK MERRIN ===================== -->
+  <section class="card">
+    <h2>Sheet 3 &mdash; Pock Merrin</h2>
+    <p class="who">Worn by <b>Slim</b></p>
+    <img class="paper" src="img/s7_paper_pock_merrin.jpg" alt="Watch-warrant for Pock Merrin">
+
+    <table class="facts">
+      <tr><td class="k">Name</td><td class="v"><b>Pock Merrin</b></td></tr>
+      <tr><td class="k">On the paper</td><td class="v">Halfling &middot; galley hand</td></tr>
+    </table>
+
+    <h3>The legend &mdash; yours to write</h3>
+    <p class="note">Not written yet. If someone asks, you answer &mdash; and your answer stands from then on.
+      The questions a bored officer asks:</p>
+    <ul>
+      <li>Whose galley did you learn under?</li>
+      <li>Your last galley?</li>
+      <li>Why the north?</li>
+    </ul>
+
+    <h3>Conduct</h3>
+    <ul>
+      <li>Galley hands answer to the ship's master.</li>
+      <li>The name <b>Pock Merrin</b> answers before the question is asked.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== OFF THE ROSTER ===================== -->
+  <p class="note" style="text-align:center;margin-top:1.5rem">Off the roster for the voyage north &mdash; called away at Luskan.</p>
+
+  <!-- ===================== MARTA GREEL ===================== -->
+  <section class="card stood-down">
+    <h2>Marta Greel</h2>
     <p class="who">Worn by <b>Maltus Draught</b></p>
 
     <table class="facts">
@@ -173,8 +238,8 @@
   </section>
 
   <!-- ===================== NERIS FANE ===================== -->
-  <section class="card">
-    <h2>Sheet 3 &mdash; Neris Fane</h2>
+  <section class="card stood-down">
+    <h2>Neris Fane</h2>
     <p class="who">Worn by <b>Freya</b></p>
 
     <table class="facts">
